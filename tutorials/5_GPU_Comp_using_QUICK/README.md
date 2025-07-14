@@ -98,15 +98,13 @@ Fun fact, **Nuclear energy is probably the easiest way to ascertain if two confo
 
 Go to the QM_calc directory and run QM calculation on Taxol using a small basis set (6-31G).
 ```
-cd QUICK/QM_calc
+cd 5_GPU_Comp_using_QUICK/QUICK/QM_calc
 quick.cuda taxol_small_basis_set.in
 ```
 Now run CPU jobs for comparison.
 
-Open a new shell and run an interactive job on CPU node. **Do not close the shell running job in GPU node**
-```
-srun-cpu-shared
-```
+Go to the shell running interactive job on CPU node. **Do not close the shell running job in GPU node**
+
 Do the environment setup analogous to the GPU node.
 ```
 cd $SLURM_TMPDIR
