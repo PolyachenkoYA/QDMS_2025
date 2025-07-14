@@ -15,13 +15,16 @@ We will log onto an Expanse GPU node, set up our environment and run sample test
 
 1) Log onto EXPANSE
 ```
-ssh etrainXX@login.expanse.sdsc.edu
+ssh <username>@login.expanse.sdsc.edu
 ```
-2) Run an interactive job
+2) Run two interactive jobs in two shells one each for CPU and GPU
 ```
-srun-gpu-shared
-``` 
-3) Once we are on a GPU node, we load the required modules to gain access to the GPU software stack.
+srun --account=csd973 --partition=shared --pty --nodes=1 --ntasks-per-node=16 --cpus-per-task=1 --mem=32G -t 3:00:00 --wait=0 --export=ALL --reservation=QDMS-CPU /bin/bash
+```
+```
+srun --account=csd973 --partition=gpu-shared --pty --nodes=1 --ntasks-per-node=1 --cpus-per-task=4 --gpus=1 --mem=20G -t 2:00:00 --wait=0 --export=ALL --reservation=QDMS-GPU /bin/bash
+```
+3) Let us start with the shell running on GPU node. Once we are on a GPU node, we load the required modules to gain access to the GPU software stack.
 ```
 source /expanse/projects/qstore/csd973/quick.sh
 ```
@@ -29,19 +32,17 @@ Source a file means run commands in the file as if you are typing on the command
 ```
 cat /expanse/projects/qstore/csd973/quick.sh
 ```
-`cuda11.7/toolkit/11.7.1` provides the CUDA Toolkit.
-List the modules
+`cuda11.7/toolkit/11.7.1` provides the CUDA Toolkit. Check if you have cuda toolkit available.
 ```
-module list
+nvcc --version
 ```
 You should see following output
 ```
-Currently Loaded Modules:
-  1) shared   2) slurm/expanse/23.02.7   3) sdsc/1.0   4) DefaultModules   5) cuda11.7/toolkit/11.7.1 (H)   6) cpu/0.17.3b (c)   7) gcc/10.2.0/npcyll4   8) cmake/3.21.4/teqow32   9) ucx/1.10.1/dnpjjuc  10) openmpi/4.1.3/oq3qvsv  11) intel-mkl/2020.4.304/ghfk3mu
-
-  Where:
-   c:  built natively for AMD Rome
-   H:             Hidden Module
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2022 NVIDIA Corporation
+Built on Wed_Jun__8_16:49:14_PDT_2022
+Cuda compilation tools, release 11.7, V11.7.99
+Build cuda_11.7.r11.7/compiler.31442593_0
 ```
 We can use the `nvidia-smi` command to check for available GPUs and which processes are running on the GPU.
 ```
