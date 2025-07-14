@@ -9,6 +9,7 @@
 #SBATCH --mem=64GB
 #SBATCH -A csd973
 ##SBATCH --export=ALL
+#SBATCH --reservation=QDMS-CPU
 #SBATCH -t 05:00:00
 
 ###
