@@ -72,10 +72,10 @@ Sun Jul 13 18:36:29 2025
 +-----------------------------------------------------------------------------+
 ```
 ## QM calculations on QUICK
-All input files are in the `~/tutorials/QUICK/QM_calc/` directory. We recommend to copy the directory to the scratch directory on the compute node for faster IO.
+All input files are in the `/expanse/projects/qstore/csd973/tutorials/5_GPU_Comp_using_QUICK/` directory. We recommend to copy the directory to the scratch directory on the compute node for faster IO.
 ```
 cd $SLURM_TMPDIR
-cp -r ~/tutorials/QUICK/ ./
+cp -r  /expanse/projects/qstore/csd973/tutorials/5_GPU_Comp_using_QUICK/ .
 ```
 Make sure QUICK is in your PATH.
 ```
