@@ -76,6 +76,7 @@ All input files are in the `/expanse/projects/qstore/csd973/tutorials/5_GPU_Comp
 ```
 cd $SLURM_TMPDIR
 cp -r  /expanse/projects/qstore/csd973/tutorials/5_GPU_Comp_using_QUICK/ .
+cd 5_GPU_Comp_using_QUICK/QUICK/QM_calc/
 ```
 Make sure QUICK is in your PATH.
 ```
@@ -101,6 +102,10 @@ Go to the QM_calc directory and run QM calculation on Taxol using a small basis 
 cd 5_GPU_Comp_using_QUICK/QUICK/QM_calc
 quick.cuda taxol_small_basis_set.in
 ```
+Open the output and check the result.
+```
+vi taxol_small_basis_set.out
+```
 Now run CPU jobs for comparison.
 
 Go to the shell running interactive job on CPU node. **Do not close the shell running job in GPU node**
@@ -108,15 +113,23 @@ Go to the shell running interactive job on CPU node. **Do not close the shell ru
 Do the environment setup analogous to the GPU node.
 ```
 cd $SLURM_TMPDIR
-cp -r ~/tutorials/QUICK/ ./
+cp -r /expanse/projects/qstore/csd973/tutorials/5_GPU_Comp_using_QUICK/ ./
+cd 5_GPU_Comp_using_QUICK/QUICK/QM_calc/
 source /expanse/projects/qstore/csd973/quick.sh
 source /expanse/projects/qstore/csd973/QUICK/install/quick.rc
 ```
 Run `lscpu` to details of the EXPANSE compute node CPU architecture.
-Run MPI parallel job with QUICK on AMD EPYC 7742 CPUs.
+Launch 16 MPI processes with QUICK on AMD EPYC 7742 CPUs.
 ```
-mpirun -np 16 quick.MPI taxol_small_basis_set_cpu.in
+mpirun -np 16 quick.MPI taxol_small_basis_set_16cpu.in
 ```
+View the result of the computations.
+```
+vi taxol_small_basis_set_16cpu.out
+```
+The calculations on GPU are significantly faster than the calculaions on CPU.
+<Put a bar plot here>
+
 Please close the shell running the CPU job and go back to the shell running intractive job in GPU node. 
 The last example used a small basis set. However, for production level calculations you will need a larger basis set including diffuse functions. We will not have time to run the large basis set calculation. The large basis set (6-311++G(2d,2p)) calculation can be run by running the following code:
 ```
@@ -128,7 +141,7 @@ Making the cutoff tighter facilitates convergence. The following calculation wil
 ```
 quick.cuda taxol_large_basis_set_tightcut.in
 ```
-Thus, generally if you have convergence issues it arises from either loose cutoff criteria, bad coordinates and starting guess. You have to be careful to avoid providing coordinates in atomic units. QUICK uses SAD guess.
+Thus, generally if you have convergence issues it arises from either loose cutoff criteria or bad coordinates. You have to be careful to avoid providing coordinates in atomic units.
 
 ### Geometry optimization
 Molecular properties at high energy structures can be very different compared to the practical strutures. You can optimize geometry to 
