@@ -3,21 +3,86 @@
 
 # # BYOMBM Part 1: PBMetaD & FPS
 
-# In[18]:
+# Some Jupyter Magic
+
+# In[ ]:
 
 
-get_ipython().run_line_magic('load_ext', 'autoreload')
-get_ipython().run_line_magic('autoreload', '2')
-get_ipython().run_line_magic('matplotlib', 'agg')
+# get_ipython().run_line_magic('load_ext', 'autoreload')
+# get_ipython().run_line_magic('autoreload', '2')
+# get_ipython().run_line_magic('matplotlib', 'agg')
+import os
 
 
-# In[19]:
+from Imports import *
 
 
-get_ipython().run_line_magic('run', 'Imports.ipynb')
+# In[ ]:
 
 
-# In[20]:
+pbmetad_pool_size = 1000
+fps_phase1_size = 500
+fps_target_configs = 250
+
+
+# In[ ]:
+
+
+# pbmetad_pool_size = 100000
+# fps_phase1_size = 30000
+# fps_target_configs = 3000
+
+
+# In[ ]:
+
+
+if os.path.exists(scratch):
+    scratch.remove()
+if os.path.exists(restart):
+    restart.remove()
+if os.path.exists(structures):
+    structures.remove()
+scratch.create()
+restart.create()
+structures.create()
+
+
+# ## Setup
+
+# Please uncomment one of these lines, depending on which monomer you want to do:
+
+# In[ ]:
+
+
+# monomer_def_path = "fragment_COH2.def"
+# monomer_def_path = "fragment_HCN.def"
+monomer_def_path = "fragment_NH4+.def"
+
+
+# Or, create a definition for your favorite small molecule!
+
+# In[ ]:
+
+
+# monomer_def_path = "fragment_HCN.def"
+
+# my_custom_fragment_definition = BasicFragmentDefinition()
+
+# C  = my_custom_fragment_definition.add_atom(AtomDefinition("C", "A"))
+# H1 = my_custom_fragment_definition.add_atom(AtomDefinition("H", "B"))
+# H2 = my_custom_fragment_definition.add_atom(AtomDefinition("H", "B"))
+# H3 = my_custom_fragment_definition.add_atom(AtomDefinition("H", "B"))
+# H4 = my_custom_fragment_definition.add_atom(AtomDefinition("H", "B"))
+
+# my_custom_fragment_definition.add_bond(C, H1, BondDefinition(BondType.SINGLE))
+# my_custom_fragment_definition.add_bond(C, H2, BondDefinition(BondType.SINGLE))
+# my_custom_fragment_definition.add_bond(C, H3, BondDefinition(BondType.SINGLE))
+# my_custom_fragment_definition.add_bond(C, H4, BondDefinition(BondType.SINGLE))
+
+# write_fragment_definition(monomer_def_path, my_custom_fragment_definition)
+
+
+# In[ ]:
 
 
 calculator = Psi4Calculator(
@@ -30,62 +95,47 @@ calculator = Psi4Calculator(
         }
 )
 
-pbmetad_pool_size = 1000
-fps_phase1_size = 500
-fps_target_configs = 250
+
+# In[ ]:
 
 
-# In[15]:
-
-
-# scratch.remove()
-# restart.remove()
-scratch.create()
-restart.create()
-
-
-# ## Setup
-
-# In[5]:
-
-
-definition_my_fragment = read_fragment_definition(definitions.file("fragment_NH4+.def"))
+definition_my_fragment = read_fragment_definition(definitions.file(monomer_def_path))
 definition_water = read_fragment_definition(definitions.file("H2O.def"))
 
 definition_monomer = BasicCompoundDefinition()
 definition_monomer.add_fragment(definition_my_fragment)
-write_definition(definitions.file("monomer.xyz"), definition_monomer)
+write_definition(definitions.file("monomer.def"), definition_monomer)
 
 definition_monomer_H2O = BasicCompoundDefinition()
 definition_monomer_H2O.add_fragment(definition_water)
-write_definition(definitions.file("monomer_H2O.xyz"), definition_monomer_H2O)
+write_definition(definitions.file("monomer_H2O.def"), definition_monomer_H2O)
 
 definition_dimer = BasicCompoundDefinition()
 definition_dimer.add_fragment(definition_my_fragment)
 definition_dimer.add_fragment(definition_water)
-write_definition(definitions.file("dimer.xyz"), definition_dimer)
+write_definition(definitions.file("dimer.def"), definition_dimer)
 
 definition_trimer = BasicCompoundDefinition()
 definition_trimer.add_fragment(definition_my_fragment)
 definition_trimer.add_fragment(definition_water)
 definition_trimer.add_fragment(definition_water)
-write_definition(definitions.file("trimer.xyz"), definition_trimer)
+write_definition(definitions.file("trimer.def"), definition_trimer)
 
 
-# In[6]:
+# In[ ]:
 
 
 system_initializer = VSEPRInitializer(seed=12345)
 
 
-# In[7]:
+# In[ ]:
 
 
 init_monomer = system_initializer(definition_monomer)
 write_system(structures.file("initialized_monomer.xyz"), init_monomer)
 
 
-# In[8]:
+# In[ ]:
 
 
 optimized_monomer, optimized_e, log_path = calculator.optimize(
@@ -95,13 +145,23 @@ optimized_monomer, optimized_e, log_path = calculator.optimize(
 )
 
 
-# In[9]:
+# In[ ]:
+
+
+render_system(
+    optimized_monomer,
+    centerer=lambda system: system.atoms[0].point,
+    aligner=lambda system: (system.atoms[1].point, system.atoms[2].point)
+)
+
+
+# In[ ]:
 
 
 write_system(structures.file("optimized_monomer.xyz"), optimized_monomer)
 
 
-# In[10]:
+# In[ ]:
 
 
 modes_monomer, log_path = calculator.normal_modes(
@@ -111,19 +171,19 @@ modes_monomer, log_path = calculator.normal_modes(
 )
 
 
-# In[11]:
+# In[ ]:
 
 
 write_vibrational_modes(structures.file("modes_monomer.modes"), modes_monomer)
 
 
-# In[12]:
+# In[ ]:
 
 
-optimized_water = read_system(definitions.file("monomer_H2O.xyz"), structures.file("water.xyz"))
+optimized_water = read_system(definitions.file("monomer_H2O.def"), definitions.file("water.xyz"))
 
 
-# In[21]:
+# In[ ]:
 
 
 clusters_dimer = find_clusters(
@@ -141,19 +201,29 @@ clusters_dimer = find_clusters(
 )
 
 
-# In[22]:
+# In[ ]:
 
 
 optimized_dimer = clusters_dimer[0]
 
 
-# In[23]:
+# In[ ]:
+
+
+render_system(
+    optimized_dimer,
+    centerer=lambda system: system.atoms[0].point,
+    aligner=lambda system: (system.atoms[1].point, system.atoms[3].point)
+)
+
+
+# In[ ]:
 
 
 write_system(structures.file("optimized_dimer.xyz"), optimized_dimer)
 
 
-# In[24]:
+# In[ ]:
 
 
 modes_dimer, log_path = calculator.normal_modes(
@@ -163,7 +233,7 @@ modes_dimer, log_path = calculator.normal_modes(
 )
 
 
-# In[25]:
+# In[ ]:
 
 
 write_vibrational_modes(structures.file("modes_dimer.modes"), modes_dimer)
@@ -177,7 +247,7 @@ clusters_trimer = find_clusters(
         calculator=calculator,
         num_guesses=5,
         restart_path=restart.sub_directory("clusters_3b"),
-        guess_seed=123345,
+        guess_seed=234234,
         radius=5,
         num_threads=16,
         mem_mb=32000,
@@ -187,19 +257,29 @@ clusters_trimer = find_clusters(
 )
 
 
-# In[54]:
+# In[ ]:
 
 
 optimized_trimer = clusters_trimer[0]
 
 
-# In[55]:
+# In[ ]:
+
+
+render_system(
+    optimized_trimer,
+    centerer=lambda system: system.atoms[0].point,
+    aligner=lambda system: (system.atoms[1].point, system.atoms[3].point)
+)
+
+
+# In[ ]:
 
 
 write_system(structures.file("optimized_trimer.xyz"), optimized_trimer)
 
 
-# In[56]:
+# In[ ]:
 
 
 modes_trimer, log_path = calculator.normal_modes(
@@ -209,7 +289,7 @@ modes_trimer, log_path = calculator.normal_modes(
 )
 
 
-# In[57]:
+# In[ ]:
 
 
 write_vibrational_modes(structures.file("modes_trimer.modes"), modes_trimer)
@@ -217,7 +297,7 @@ write_vibrational_modes(structures.file("modes_trimer.modes"), modes_trimer)
 
 # ## Monomer
 
-# In[30]:
+# In[ ]:
 
 
 bond_params, angle_params, nonbonded_params = get_pbmetad_parameters(
@@ -225,31 +305,31 @@ bond_params, angle_params, nonbonded_params = get_pbmetad_parameters(
 )
 
 
-# In[31]:
+# In[ ]:
 
 
 bond_params
 
 
-# In[32]:
+# In[ ]:
 
 
 angle_params
 
 
-# In[33]:
+# In[ ]:
 
 
 nonbonded_params
 
 
-# In[34]:
+# In[ ]:
 
 
 charges = {atom.symmetry: 0.0 for atom in definition_monomer.atoms}
 
 
-# In[36]:
+# In[ ]:
 
 
 perform_pbmetad_simulation(
@@ -259,7 +339,7 @@ perform_pbmetad_simulation(
         sample_interval=10,
         temperature=700,
         seed=12345,
-        configurations_path=structures.file("pbmetad_traj.xyz"),
+        configurations_path=structures.file("pbmetad_1b_traj.xyz"),
         bond_params=bond_params,
         angle_params=angle_params,
         nonbonded_params=nonbonded_params,
@@ -269,14 +349,14 @@ perform_pbmetad_simulation(
 )
 
 
-# In[37]:
+# In[ ]:
 
 
 pbmetad_configs_monomer = perform_fps(
         definition_monomer,
         optimized_monomer,
         modes_monomer,
-        structures.file("pbmetad_traj.xyz"),
+        structures.file("pbmetad_1b_traj.xyz"),
         num_pool_configs=pbmetad_pool_size,
         num_phase1_input_configs=fps_phase1_size,
         approx_configs_to_select=fps_target_configs,
@@ -286,7 +366,7 @@ pbmetad_configs_monomer = perform_fps(
 )
 
 
-# In[38]:
+# In[ ]:
 
 
 render_overlayed_systems(
@@ -300,7 +380,7 @@ render_overlayed_systems(
 
 # ## Dimer
 
-# In[39]:
+# In[ ]:
 
 
 bond_params, angle_params, nonbonded_params = get_pbmetad_parameters(
@@ -308,20 +388,20 @@ bond_params, angle_params, nonbonded_params = get_pbmetad_parameters(
 )
 
 
-# In[40]:
+# In[ ]:
 
 
 charges["E"] = 0.0
 charges["F"] = 0.0
 
 
-# In[41]:
+# In[ ]:
 
 
 pbmetad_2b_size = 500
 
 
-# In[42]:
+# In[ ]:
 
 
 perform_pbmetad_simulation(
@@ -341,7 +421,7 @@ perform_pbmetad_simulation(
 )
 
 
-# In[43]:
+# In[ ]:
 
 
 pbmetad_configs_dimer = perform_fps(
@@ -358,7 +438,7 @@ pbmetad_configs_dimer = perform_fps(
 )
 
 
-# In[44]:
+# In[ ]:
 
 
 render_overlayed_systems(
@@ -372,7 +452,7 @@ render_overlayed_systems(
 
 # ## Trimer
 
-# In[58]:
+# In[ ]:
 
 
 bond_params, angle_params, nonbonded_params = get_pbmetad_parameters(
@@ -380,13 +460,13 @@ bond_params, angle_params, nonbonded_params = get_pbmetad_parameters(
 )
 
 
-# In[59]:
+# In[ ]:
 
 
 pbmetad_3b_size = 500
 
 
-# In[60]:
+# In[ ]:
 
 
 perform_pbmetad_simulation(
@@ -406,7 +486,7 @@ perform_pbmetad_simulation(
 )
 
 
-# In[63]:
+# In[ ]:
 
 
 pbmetad_configs_trimer = perform_fps(
@@ -423,7 +503,7 @@ pbmetad_configs_trimer = perform_fps(
 )
 
 
-# In[64]:
+# In[ ]:
 
 
 render_overlayed_systems(
@@ -433,10 +513,4 @@ render_overlayed_systems(
     alpha=0.05,
     num_to_show=25
 )
-
-
-# In[ ]:
-
-
-
 

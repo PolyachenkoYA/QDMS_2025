@@ -1,6 +1,10 @@
 To launch a Jupyter Session via the Expanse portal:
 
-1)  Navigate to https://portal.expanse.sdsc.edu/ in your browser. You should see this:
+1)  Navigate to https://portal.expanse.sdsc.edu/ in your browser. If you are not yet loggeed in, you will see this:
+
+    ![alt text](login.png)
+
+2) Please login by either selecting the option that looks like "your_access_username@access-ci.org" or if that option is not available, "Link an identity". Once you are logged in, you should be redirected to:
 
     ![alt text](portal.png)
 
