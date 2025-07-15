@@ -42,14 +42,16 @@ To launch a Jupyter Session via the Expanse portal:
         QDMS-CPU
 
     Working Directory:
-        /expanse/lustre/projects/csd973/<your user name here>/QDMS_2025
+        /expanse/lustre/projects/csd973/your_user_name_here/QDMS_2025
+
+        (Please replace your_user_name_here with your user name.)
 
     Type:
         JupyterLab
 
     *Leave all other boxes blank.*
 
-5) Click "Submit"
+6) Click "Submit"
 
     ![alt text](submit.png)
 
