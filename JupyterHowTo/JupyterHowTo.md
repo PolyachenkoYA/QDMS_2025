@@ -76,3 +76,5 @@ To launch a Jupyter Session via the Expanse portal:
 8) Please wait until your job is running, at which point you will be redirected to the notebook. Which looks like this:
 
     ![alt text](lab.png)
+
+Conda init path: /expanse/projects/qstore/csd973/anaconda3/bin/conda
