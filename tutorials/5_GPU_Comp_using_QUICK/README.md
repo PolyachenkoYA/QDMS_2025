@@ -149,6 +149,10 @@ Molecular properties at high energy structures can be very different compared to
 cd $SLURM_TMPDIR/5_GPU_Comp_using_QUICK/QM_calc/
 quick.cuda dopamine_opt_dlfind.in
 ```
+The above example uses DL-Find optimizer. You can also use legacy QUICK optimizer. However, this is **not recommended** as it uses a cartesian coordinate system with a unit matrix as the initial Hessian.
+```
+quick.cuda dopamine_opt_lopt.in
+```
 ### ESP and RESP charge computation
 ## QM/MM calculation using QUICK and AMBER
 ### Simulation setup
