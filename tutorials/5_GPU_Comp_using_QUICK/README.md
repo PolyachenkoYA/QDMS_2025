@@ -131,11 +131,11 @@ The calculations on GPU are significantly faster than the calculaions on CPU.
 ![](taxol_small_basis_set.png)
 
 Please close the shell running the CPU job and go back to the shell running intractive job in GPU node. 
-The last example used a small basis set. However, for production level calculations you will need a larger basis set including diffuse functions. We will not have time to run the large basis set calculation. The large basis set (6-311++G(2d,2p)) calculation can be run by running the following code:
+The last example used a small basis set. However, for production level calculations you will need a larger basis set including diffuse functions. We will not have time to run the large basis set calculation. The large basis set (6-311++G(2d,2p)), including diffuse functions, calculation can be run by running the following code:
 ```
 quick.cuda taxol_large_basis_set.in
 ```
-The above calculation will not converge!! This is due to the presence of the diffused basis functions leading linearly dependent basis functions (small eigen value of the overlap matrix).
+The above calculation will not converge!! This is due to the presence of large number of diffused basis functions leading linearly dependent basis functions (small eigen value of the overlap matrix). This is a general issue with QM codes and not specific to QUICK.
 
 Making the cutoff tighter facilitates convergence. The following calculation will converge.
 ```
@@ -144,7 +144,11 @@ quick.cuda taxol_large_basis_set_tightcut.in
 Thus, generally if you have convergence issues it arises from either loose cutoff criteria or bad coordinates. You have to be careful to avoid providing coordinates in atomic units.
 
 ### Geometry optimization
-Molecular properties at high energy structures can be very different compared to the practical strutures. You can optimize geometry to 
+Molecular properties at high energy structures can be very different compared to the molecular structures accessible at room temperatures. Thus, low energy structures are required for comparison to experiments. Geometry optimization is necessary to obtain low energy structures. To perform geometry optimization in QUICK run the following command:
+```
+cd $SLURM_TMPDIR/5_GPU_Comp_using_QUICK/QM_calc/
+quick.cuda dopamine_opt_dlfind.in
+```
 ### ESP and RESP charge computation
 ## QM/MM calculation using QUICK and AMBER
 ### Simulation setup
