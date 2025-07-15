@@ -128,7 +128,7 @@ View the result of the computations.
 vi taxol_small_basis_set_16cpu.out
 ```
 The calculations on GPU are significantly faster than the calculaions on CPU.
-<Put a bar plot here>
+![](taxol_small_basis_set.png)
 
 Please close the shell running the CPU job and go back to the shell running intractive job in GPU node. 
 The last example used a small basis set. However, for production level calculations you will need a larger basis set including diffuse functions. We will not have time to run the large basis set calculation. The large basis set (6-311++G(2d,2p)) calculation can be run by running the following code:
