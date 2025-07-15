@@ -99,7 +99,7 @@ Fun fact, **Nuclear energy is probably the easiest way to ascertain if two confo
 
 Go to the QM_calc directory and run QM calculation on Taxol using a small basis set (6-31G).
 ```
-cd 5_GPU_Comp_using_QUICK/QUICK/QM_calc
+cd 5_GPU_Comp_using_QUICK/QM_calc
 quick.cuda taxol_small_basis_set.in
 ```
 Open the output and check the result.
@@ -114,7 +114,7 @@ Do the environment setup analogous to the GPU node.
 ```
 cd $SLURM_TMPDIR
 cp -r /expanse/projects/qstore/csd973/tutorials/5_GPU_Comp_using_QUICK/ ./
-cd 5_GPU_Comp_using_QUICK/QUICK/QM_calc/
+cd 5_GPU_Comp_using_QUICK/QM_calc/
 source /expanse/projects/qstore/csd973/quick.sh
 source /expanse/projects/qstore/csd973/QUICK/install/quick.rc
 ```
