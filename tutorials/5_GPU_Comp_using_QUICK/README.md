@@ -80,6 +80,7 @@ cd 5_GPU_Comp_using_QUICK/QUICK/QM_calc/
 ```
 Make sure QUICK is in your PATH.
 ```
+source /expanse/projects/qstore/csd973/ambertools25/amber.sh
 source /expanse/projects/qstore/csd973/QUICK/install/quick.rc
 ```
 Run the following commands to ascertain you have the required executables.
@@ -144,16 +145,35 @@ quick.cuda taxol_large_basis_set_tightcut.in
 Thus, generally if you have convergence issues it arises from either loose cutoff criteria or bad coordinates. You have to be careful to avoid providing coordinates in atomic units.
 
 ### Geometry optimization
+"Shajan, A.; Manathunga, M.; Götz, A.W.; Merz, K.M. Geometry optimization: A comparison of different open-source geometry optimizers."
+
 Molecular properties at high energy structures can be very different compared to the molecular structures accessible at room temperatures. Thus, low energy structures are required for comparison to experiments. Geometry optimization is necessary to obtain low energy structures. To perform geometry optimization in QUICK run the following command:
 ```
 cd $SLURM_TMPDIR/5_GPU_Comp_using_QUICK/QM_calc/
 quick.cuda dopamine_opt_dlfind.in
 ```
-The above example uses DL-Find optimizer. You can also use legacy QUICK optimizer. However, this is **not recommended** as it uses a cartesian coordinate system with a unit matrix as the initial Hessian.
+The above example uses DL-Find optimizer.
+
+"Kästner, J.; Carr, J. M.; Keal, T. W.; Thiel, W.; Wander, A.; Sherwood, P. DL-FIND: An Open-Source Geometry Optimizer for Atomistic Simulations."
+
+You can also use legacy QUICK optimizer. However, this is **not recommended** as it uses a cartesian coordinate system with a unit matrix as the initial Hessian.
 ```
 quick.cuda dopamine_opt_lopt.in
 ```
-### ESP and RESP charge computation
+### Properties: ESP and RESP charge computation
+One of the primary properties you can compute in QUICK. This will be documented in the next release of QUICK. 
+
+You can compute ESP charges by running the following:
+```
+quick.cuda dopamine_esp.in
+```
+This will generate an output (`dopamine_esp.out`) and a file (`dopamine_esp.vdw`) containing the grid points used to obtain the ESP charges and the corresponding electrostatic potentials.
+
+To compute RESP you need to use antechamber package in Ambertools.
+```
+antechamber -i dopamine_esp.out -fi quick -o dopamine_esp.mol2 -fo mol2 -c resp -s 2 -pf y
+```
+`dopamine_esp.mol2` contains the RESP charges.
 ## QM/MM calculation using QUICK and AMBER
 ### Simulation setup
 
