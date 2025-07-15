@@ -145,7 +145,7 @@ quick.cuda taxol_large_basis_set_tightcut.in
 Thus, generally if you have convergence issues it arises from either loose cutoff criteria or bad coordinates. You have to be careful to avoid providing coordinates in atomic units.
 
 ### Geometry optimization
-"Shajan, A.; Manathunga, M.; Götz, A.W.; Merz, K.M. Geometry optimization: A comparison of different open-source geometry optimizers."
+"Shajan, A.; Manathunga, M.; Götz, A.W.; Merz, K.M. Geometry optimization: A comparison of different open-source geometry optimizers. J. Chem. Theory Comput. 19, 7533-7541 (2023)."
 
 Molecular properties at high energy structures can be very different compared to the molecular structures accessible at room temperatures. Thus, low energy structures are required for comparison to experiments. Geometry optimization is necessary to obtain low energy structures. To perform geometry optimization in QUICK run the following command:
 ```
@@ -154,7 +154,7 @@ quick.cuda dopamine_opt_dlfind.in
 ```
 The above example uses DL-Find optimizer.
 
-"Kästner, J.; Carr, J. M.; Keal, T. W.; Thiel, W.; Wander, A.; Sherwood, P. DL-FIND: An Open-Source Geometry Optimizer for Atomistic Simulations."
+"Kästner, J.; Carr, J. M.; Keal, T. W.; Thiel, W.; Wander, A.; Sherwood, P. DL-FIND: An Open-Source Geometry Optimizer for Atomistic Simulations. J. Phys. Chem. A 113, 11856-11865 (2009)."
 
 You can also use legacy QUICK optimizer. However, this is **not recommended** as it uses a cartesian coordinate system with a unit matrix as the initial Hessian.
 ```
