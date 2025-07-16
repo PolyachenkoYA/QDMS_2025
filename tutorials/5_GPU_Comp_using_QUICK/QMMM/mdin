@@ -1,0 +1,32 @@
+NVT at 300K with Langevin for 20 steps at dt=1.0fs - QM/MM B3LYP/6-31G(d)/SPCFW
+ &cntrl
+  imin     = 0,      ! do MD (no minimization)
+  irest    = 1,      ! trajectory restart
+  ntx      = 5,      ! coordinates and velocities are read in
+  dt       = 0.001   ! 1.0fs time step
+  ntb      = 0,      ! no periodic boundaries
+  cut      = 999.0,  ! non-bonded cutoff
+  ntt      = 3,      ! use Langevin thermostat
+  gamma_ln = 5.0,    ! Langevin collision frequency in 1/ps
+  ig       = -1,     ! random seed based on wall clock
+  temp0    = 300.0,  ! target temp = 300K
+  ntpr     = 1,      ! logfile print frequency
+  ntwx     = 1,      ! coordinate writing frequency
+  ntwr     = 10,     ! restart file writing frequency
+  nstlim   = 20,     ! number of steps
+  nscm     = 2000,   ! COM motion removal frequency
+  jfastw   = 4,      ! do not use routines for fast triangulated water
+  ioutfm   = 1,      ! NetCDF MDCRD.
+  ifqnt    = 1       ! use QM/MM
+ /
+ &qmmm
+  qmmask    = ':1,2,3,4',
+  qmcharge  = 1,
+  spin      = 1,
+  qm_theory = 'QUICK'
+ /
+ &quick
+   method = 'B3LYP',
+   basis  = '6-31G*'
+ /
+ 
