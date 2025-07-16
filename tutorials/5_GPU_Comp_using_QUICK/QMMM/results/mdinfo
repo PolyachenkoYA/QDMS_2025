@@ -1,0 +1,20 @@
+
+ NSTEP =       20   TIME(PS) =     100.020  TEMP(K) =   302.89  PRESS =     0.0
+ Etot   =   -861150.9609  EKtot   =      2747.4014  EPtot      =   -863898.3623
+ BOND   =       964.4119  ANGLE   =       666.4979  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =      2398.1839
+ EELEC  =    -13487.9178  EHBOND  =         0.0000  RESTRAINT  =         6.8237
+ QUICKESCF=   -854446.3619
+ EAMBER (non-restraint)  =   -863905.1859
+
+| Final Performance Info:
+| -----------------------------------------------------
+| Average timings for last       1 steps:
+|     Elapsed(s) =      11.89 Per Step(ms) =   11893.05
+|         ns/day =       0.01   seconds/ns = **********
+|
+| Average timings for all steps:
+|     Elapsed(s) =     244.63 Per Step(ms) =   12231.45
+|         ns/day =       0.01   seconds/ns = **********
+| -----------------------------------------------------
+
