@@ -78,9 +78,9 @@ cd $SLURM_TMPDIR
 cp -r  /expanse/projects/qstore/csd973/tutorials/5_GPU_Comp_using_QUICK/ .
 cd 5_GPU_Comp_using_QUICK/QUICK/QM_calc/
 ```
-Make sure QUICK is in your PATH.
+Make sure QUICK and Amber are in your PATH.
 ```
-source /expanse/projects/qstore/csd973/ambertools25/amber.sh
+source /expanse/projects/qstore/csd973/ambertools25_src/install/amber.sh
 source /expanse/projects/qstore/csd973/QUICK/install/quick.rc
 ```
 Run the following commands to ascertain you have the required executables.
@@ -88,6 +88,9 @@ Run the following commands to ascertain you have the required executables.
 which quick
 which quick.MPI
 which quick.cuda
+which sander
+which sander.MPI
+which sander.quick.cuda
 ```
 ### Single point calculation
 Let us consider taxol as our test case.
@@ -117,6 +120,7 @@ cd $SLURM_TMPDIR
 cp -r /expanse/projects/qstore/csd973/tutorials/5_GPU_Comp_using_QUICK/ ./
 cd 5_GPU_Comp_using_QUICK/QM_calc/
 source /expanse/projects/qstore/csd973/quick.sh
+source /expanse/projects/qstore/csd973/ambertools25_src/install_gpu/amber.sh
 source /expanse/projects/qstore/csd973/QUICK/install/quick.rc
 ```
 Run `lscpu` to details of the EXPANSE compute node CPU architecture.
