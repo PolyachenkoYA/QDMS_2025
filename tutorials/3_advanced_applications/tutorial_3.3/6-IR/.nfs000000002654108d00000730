@@ -1,0 +1,10 @@
+#!/bin/bash
+
+##1B dipoles
+#mpirun -np 1 /home/rrashmi/tutorials/QDMS/0-software/MB-SPEC/src/infrared/dipole 1b 2 0.0005 ../8-SFG/dump.dipoles > dipole-1b.dat
+#/home/rrashmi/tutorials/QDMS/0-software/MB-SPEC/src/infrared/response 10.0 dipole.dat > response-1b.dat
+
+#NB dipoles
+mpirun -np 4 /home/rrashmi/tutorials/QDMS/0-software/MB-SPEC/src/infrared/dipole nb 2 0.0005 dump.dipoles > dipole-nb.dat
+/home/rrashmi/tutorials/QDMS/0-software/MB-SPEC/src/infrared/response 10.0 dipole.dat > response-nb.dat
+/home/rrashmi/tutorials/QDMS/0-software/MB-SPEC/src/infrared/spectrum 298 125000 0 0.5 10.0 < response-nb.dat > spectrum-nb_a0.5.dat

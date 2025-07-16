@@ -1,0 +1,96 @@
+
+ ____       ____       ____       ____
+/    \     /    \     /    \     /    \
+|  #################################  |
+\__#_/     \____/     \____/     \_#__/
+   #    _        _______  _____    #
+   #   (_)      |_   __ \|_   _|   #      -*-   v unknown  -*-
+   #   __  ______ | |__) | | |     #
+   Y  [  ||______||  ___/  | |     #      A Universal Force Engine
+  0 0  | |       _| |_    _| |_    #
+   #  [___]     |_____|  |_____|   #
+ __#_       ____       ____       _#__
+/  # \     /    \     /    \     / #  \
+|  #################################  |
+\____/     \____/     \____/     \____/
+
+    
+# Git information:
+#    i-PI version: unknown
+#      Remote URL: https://github.com/i-pi/i-pi.git
+#          Branch: main                    
+#     Last Commit: f5d94d4a2cbc6262d4730c8559e1ad81151cec4f
+#
+# Simulation information:
+#           Machine Name: ockham.pl.ucsd.edu
+#      Working Directory: /home/rrashmi/tutorials/QDMS/final/timecorrs/rpmd
+#          Date and Time: 2025-07-15 14:08:11
+
+ @system: Initializing system object 
+ @simulation: Initializing simulation object 
+@ RANDOM SEED: The seed used in this calculation was 3241
+ @system: Initializing system object 
+ @simulation: Initializing simulation object 
+@ RANDOM SEED: The seed used in this calculation was 1752613691584
+ @system: Initializing system object 
+ @simulation: Initializing simulation object 
+@ RANDOM SEED: The seed used in this calculation was 1752613691600
+ @system: Initializing system object 
+ @simulation: Initializing simulation object 
+@ RANDOM SEED: The seed used in this calculation was 1752613691612
+ @system: Initializing system object 
+ @simulation: Initializing simulation object 
+@ RANDOM SEED: The seed used in this calculation was 1752613691629
+ @system: Initializing system object 
+ @simulation: Initializing simulation object 
+@ RANDOM SEED: The seed used in this calculation was 1752613691641
+ @system.bind: Binding the forces 
+Import of PyFFTW unsuccessful, using NumPy library instead. 
+ !W! Install PyFFTW to avoid slow normal-modes integration
+ @ForceField (driver): Starting the polling thread main loop.
+ @interfacesocket.pool_update:   Client asked for connection from . Now hand-shaking.
+ @interfacesocket.pool_update:   Handshaking was successful. Added to the client list.
+ @simulation.run: Average timings at MD step       0. t/step: 1.32129e-02
+ @simulation.run: Average timings at MD step    1000. t/step: 9.72627e-03
+ @simulation.run: Average timings at MD step    2000. t/step: 1.18413e-02
+ @simulation.run: Average timings at MD step    3000. t/step: 1.20035e-02
+ @simulation.run: Average timings at MD step    4000. t/step: 1.15933e-02
+ @simulation.run: Average timings at MD step    5000. t/step: 1.18462e-02
+ @simulation.run: Average timings at MD step    6000. t/step: 1.14063e-02
+ @simulation.run: Average timings at MD step    7000. t/step: 1.13309e-02
+ @simulation.run: Average timings at MD step    8000. t/step: 1.19826e-02
+ @simulation.run: Average timings at MD step    9000. t/step: 1.12879e-02
+ @simulation.run: Average timings at MD step   10000. t/step: 1.09639e-02
+ @simulation.run: Average timings at MD step   11000. t/step: 9.66683e-03
+ @simulation.run: Average timings at MD step   12000. t/step: 1.24373e-02
+ @simulation.run: Average timings at MD step   13000. t/step: 1.15379e-02
+ @simulation.run: Average timings at MD step   14000. t/step: 1.28198e-02
+ @simulation.run: Average timings at MD step   15000. t/step: 1.19064e-02
+ @simulation.run: Average timings at MD step   16000. t/step: 1.23327e-02
+ @simulation.run: Average timings at MD step   17000. t/step: 1.17601e-02
+ @simulation.run: Average timings at MD step   18000. t/step: 1.17157e-02
+ @simulation.run: Average timings at MD step   19000. t/step: 1.22191e-02
+ @simulation.run: Average timings at MD step   20000. t/step: 1.25675e-02
+ @simulation.run: Average timings at MD step   21000. t/step: 1.35171e-02
+ @simulation.run: Average timings at MD step   22000. t/step: 1.15388e-02
+ @simulation.run: Average timings at MD step   23000. t/step: 1.19509e-02
+ @simulation.run: Average timings at MD step   24000. t/step: 1.16500e-02
+ @simulation.run: Average timings at MD step   25000. t/step: 1.14821e-02
+ @simulation.run: Average timings at MD step   26000. t/step: 1.26795e-02
+ @simulation.run: Average timings at MD step   27000. t/step: 1.36810e-02
+ @simulation.run: Average timings at MD step   28000. t/step: 1.25121e-02
+ @simulation.run: Average timings at MD step   29000. t/step: 1.54747e-02
+ @simulation.run: Average timings at MD step   30000. t/step: 1.45806e-02
+ @simulation.run: Average timings at MD step   31000. t/step: 1.62727e-02
+ @simulation.run: Average timings at MD step   32000. t/step: 1.34053e-02
+ @simulation.run: Average timings at MD step   33000. t/step: 1.31085e-02
+ @simulation.run: Average timings at MD step   34000. t/step: 1.27360e-02
+ @simulation.run: Average timings at MD step   35000. t/step: 1.23220e-02
+ @simulation.run: Average timings at MD step   36000. t/step: 1.36085e-02
+ @simulation.run: Average timings at MD step   37000. t/step: 1.36293e-02
+ @simulation.run: Average timings at MD step   38000. t/step: 1.57004e-02
+ @simulation.run: Average timings at MD step   39000. t/step: 1.31198e-02
+ @softexit.trigger:  SOFTEXIT CALLED FROM THREAD <_MainThread(MainThread, started 140666510395200)>  @ SIMULATION: Exiting cleanly.
+ !W! Soft exit has been requested with message: ' @ SIMULATION: Exiting cleanly. I-PI reports success. Restartable as is: NO.'. Cleaning up.
+ @interfacesocket.close: Shutting down the driver interface.
+ @simulation.softexit: Saving the latest status at the end of the step

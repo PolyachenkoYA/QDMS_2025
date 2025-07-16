@@ -1,0 +1,35 @@
+<simulation verbosity='low'>
+  <output prefix='simulation'>
+    <properties filename='out' stride='8'>  [step, time{picosecond}, conserved{electronvolt}, temperature{kelvin}, kinetic_md{electronvolt}, potential{electronvolt}, density{g/cm3}, volume{angstrom3}, pressure_cv{atmosphere}, pressure_md{atmosphere}] </properties>
+    <trajectory filename='pos' format='xyz' stride='8' cell_units='angstrom'> positions{angstrom} </trajectory>
+    <checkpoint filename='restart' stride='8' overwrite='true'/>
+  </output>
+  <total_steps> 200000 </total_steps>
+  <prng>
+    <seed>921282</seed>
+  </prng>
+  <ffsocket mode='unix' pbc='true' name='water'>
+    <address> water </address>
+  </ffsocket>
+  <system>
+    <initialize nbeads='1'>
+      <file mode='chk'> simulation.restart.old </file>
+<!--      <file mode='xyz' units='angstrom'> config.xyz </file> -->
+<!--      <cell mode='abc' units='angstrom'> [19.73,19.73,19.73] </cell> -->
+<!--      <velocities mode='thermal' units='kelvin'> 298.0 </velocities> -->
+    </initialize>
+    <forces>
+      <force forcefield='water' weight='1.0'></force>
+    </forces>
+    <ensemble>
+      <temperature units='kelvin'> 298.0 </temperature>
+      <pressure units='atmosphere'> 1.0 </pressure>
+    </ensemble>
+    <motion mode='dynamics'>
+      <fixcom> true </fixcom>
+      <dynamics mode='nve'>
+        <timestep units='femtosecond'> 0.5 </timestep>
+      </dynamics>
+    </motion>
+  </system>
+</simulation>
