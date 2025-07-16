@@ -1,0 +1,69 @@
+# Graphene sheet - MB-pol water simulation
+
+variable        T   equal  300
+variable        P   equal  1.0
+variable        dt  equal  0.5 
+variable        nsteps equal 2000
+variable        thermo_freq equal 5
+variable        dump_freq equal 5
+
+processors      * * 1 map xyz
+
+boundary        p p p
+units           real
+atom_style      full
+bond_style      harmonic
+angle_style     harmonic
+angle_style     harmonic
+dihedral_style  opls
+improper_style  harmonic
+
+read_data       initial.data
+
+pair_style      hybrid/overlay mbx 9.0 lj/cut 9.0  tersoff     # coul/exclude 9.0
+pair_modify     tail yes   # add long-range VanderWaals tail "correction"
+
+pair_coeff      * * tersoff C.tersoff C NULL NULL
+
+# LJ epsilon and sigma are in kcal/mol and Angstroms
+#pair_coeff      1      1         lj/cut      0.076            3.55000 #C - C
+
+# suggested LJ parameters for MB-pol:
+# σOO = 3.26393 Å
+# εOO = 0.26948 kcal/mol
+# σHH = 2.68354 Å
+# εHH = 3.7E-10 kcal/mol
+# Mixed using Lorentz-Berthelot rules (epsilon geometric, sigma arithmetic)
+pair_coeff      1      2 lj/cut  0.14311     3.40696
+pair_coeff      1      3 lj/cut  5.3E-06     3.11677
+
+#pair_coeff      1 1 coul/exclude
+
+#MBX-water
+pair_coeff      2*3 2*3 mbx 0.0 0.0
+
+timestep        ${dt}
+
+neigh_modify    every 1 delay 0 check yes
+
+compute         mbx all pair mbx
+fix             fxmbx all mbx 2 dp1 1 1 1 1 h2o 2 3 3 2 3 3 json mbx.json print/settings print/dipoles
+fix             fxnpt all npt temp ${T} ${T} $(1000.0*dt) iso ${P} ${P} $(4000.0*dt)
+
+fix             thermo_print all print ${thermo_freq} "$(step) $(0.001*time) $(temp) $(etotal) $(ke) $(pe) $(enthalpy) $(density) $(vol) $(press)" &
+                append thermo.out screen no title "# step time temp etotal ke pe enthalpy density vol press"
+
+thermo_style    custom step time temp etotal density lx ly lz vol pxx pyy pzz press
+thermo          ${thermo_freq}
+thermo_modify   flush yes
+
+dump            2 all custom ${dump_freq} traj.lammpstrj id mol element type x y z vx vy vz 
+dump_modify     2 element C O H
+dump_modify     2 append no sort id
+
+restart         ${dump_freq} restart.1 restart.2
+
+run             ${nsteps}  upto
+
+write_data      final.data nocoeff
+write_restart   restart.final
