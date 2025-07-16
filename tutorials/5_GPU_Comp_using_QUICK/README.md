@@ -175,6 +175,8 @@ quick.cuda dopamine_esp.in
 ```
 This will generate an output (`dopamine_esp.out`) and a file (`dopamine_esp.vdw`) containing the grid points used to obtain the ESP charges and the corresponding electrostatic potentials.
 
+![](dopamine_with_points.png)
+
 To compute RESP you need to use antechamber package in Ambertools.
 ```
 antechamber -i dopamine_esp.out -fi quick -o dopamine_esp.mol2 -fo mol2 -c resp -s 2 -pf y
@@ -231,7 +233,7 @@ with vmd
 vmd -parm7 prmtop -netcdf mdcrd
 ```
 
-## QM/MM simulation
+### QM/MM simulation
 
 All solute and ion atoms are in the QM region.
 All water molecules are in the MM region.
