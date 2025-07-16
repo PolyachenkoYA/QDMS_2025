@@ -1,0 +1,18 @@
+Given lammps.in for graphene oxide (Tersoff + OPLS potential), modify it such that:
+
+graphene oxide: Tersoff + OPLS
+H2O: MB-pol
+ 
+
+LJ param needed:
+
+Graphene:
+σCC = 3.55000 Å
+εCC = 0.076   kcal/mol
+
+Suggested LJ parameters for MB-pol:
+σOO = 3.26393 Å
+εOO = 0.26948 kcal/mol
+σHH = 2.68354 Å
+εHH = 3.7E-10 kcal/mol
+Mixed using Lorentz-Berthelot rules (epsilon geometric, sigma arithmetic)
