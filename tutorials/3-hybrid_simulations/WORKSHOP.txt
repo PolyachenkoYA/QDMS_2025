@@ -1,12 +1,12 @@
 Step 1: In solution/, understand inputs in
 
   1-graphene_water/
-  2-graphene_oxide_water/
+  3-alumina_water/
 
 Step 2: In exercise/, Force-field parameters are defined, and MB-pol related instructions has been removed. Observe difference between exercise/ and solution/ for
 
  1-graphene_water/
- 2-graphene_oxide_water/
+ 3-alumina_water/
 
 and attempt to modify
 
