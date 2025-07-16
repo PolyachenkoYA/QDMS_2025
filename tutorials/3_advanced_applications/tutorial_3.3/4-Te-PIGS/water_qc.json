@@ -1,0 +1,13 @@
+{
+    "verbose":		false,
+    "use_unix":		true,
+    "port":		31296,
+    "host":		"qc-water",
+    "graph_file":	"graph_qc_mbpol-compress.pb",
+    "coord_file":	"config.xyz",
+    "atom_type" : {
+	"O":		0,
+	"H":		1,
+	"H":		1
+    }
+}

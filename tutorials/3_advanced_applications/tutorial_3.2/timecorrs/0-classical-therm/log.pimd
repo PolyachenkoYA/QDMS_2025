@@ -1,0 +1,144 @@
+
+ ____       ____       ____       ____
+/    \     /    \     /    \     /    \
+|  #################################  |
+\__#_/     \____/     \____/     \_#__/
+   #    _        _______  _____    #
+   #   (_)      |_   __ \|_   _|   #      -*-   v unknown  -*-
+   #   __  ______ | |__) | | |     #
+   Y  [  ||______||  ___/  | |     #      A Universal Force Engine
+  0 0  | |       _| |_    _| |_    #
+   #  [___]     |_____|  |_____|   #
+ __#_       ____       ____       _#__
+/  # \     /    \     /    \     / #  \
+|  #################################  |
+\____/     \____/     \____/     \____/
+
+    
+# Git information:
+#    i-PI version: unknown
+#      Remote URL: https://github.com/i-pi/i-pi.git
+#          Branch: main                    
+#     Last Commit: f5d94d4a2cbc6262d4730c8559e1ad81151cec4f
+#
+# Simulation information:
+#           Machine Name: ockham.pl.ucsd.edu
+#      Working Directory: /home/rrashmi/tutorials/QDMS/final/timecorrs/0-classical-therm
+#          Date and Time: 2025-07-15 11:50:47
+
+ @system: Initializing system object 
+ @simulation: Initializing simulation object 
+@ RANDOM SEED: The seed used in this calculation was 32415
+ @init_file: Initializing from file oh.xyz. Dimension: length, units: angstrom, cell_units: automatic
+ @init_file: Initializing from file oh.xyz. Dimension: length, units: automatic, cell_units: automatic
+ @init_file: Initializing from file oh.xyz. Dimension: length, units: automatic, cell_units: automatic
+ @init_file: Initializing from file oh.xyz. Dimension: length, units: automatic, cell_units: automatic
+ @initializer: Resampling velocities at temperature 109.0 kelvin
+ @system.bind: Binding the forces 
+ @ForceField (driver): Starting the polling thread main loop.
+ @interfacesocket.pool_update:   Client asked for connection from . Now hand-shaking.
+ @interfacesocket.pool_update:   Handshaking was successful. Added to the client list.
+ @simulation.run: Average timings at MD step       0. t/step: 3.40819e-03
+ @simulation.run: Average timings at MD step    1000. t/step: 1.14050e-03
+ @simulation.run: Average timings at MD step    2000. t/step: 9.64624e-04
+ @simulation.run: Average timings at MD step    3000. t/step: 9.47660e-04
+ @simulation.run: Average timings at MD step    4000. t/step: 9.41100e-04
+ @simulation.run: Average timings at MD step    5000. t/step: 9.20881e-04
+ @simulation.run: Average timings at MD step    6000. t/step: 9.28973e-04
+ @simulation.run: Average timings at MD step    7000. t/step: 9.08967e-04
+ @simulation.run: Average timings at MD step    8000. t/step: 2.03072e-03
+ @simulation.run: Average timings at MD step    9000. t/step: 1.10236e-03
+ @simulation.run: Average timings at MD step   10000. t/step: 9.16128e-04
+ @simulation.run: Average timings at MD step   11000. t/step: 9.16986e-04
+ @simulation.run: Average timings at MD step   12000. t/step: 9.21818e-04
+ @simulation.run: Average timings at MD step   13000. t/step: 9.09343e-04
+ @simulation.run: Average timings at MD step   14000. t/step: 1.01509e-03
+ @simulation.run: Average timings at MD step   15000. t/step: 9.36525e-04
+ @simulation.run: Average timings at MD step   16000. t/step: 9.15815e-04
+ @simulation.run: Average timings at MD step   17000. t/step: 9.19297e-04
+ @simulation.run: Average timings at MD step   18000. t/step: 1.18094e-03
+ @simulation.run: Average timings at MD step   19000. t/step: 1.27827e-03
+ @simulation.run: Average timings at MD step   20000. t/step: 9.45549e-04
+ @simulation.run: Average timings at MD step   21000. t/step: 9.09176e-04
+ @simulation.run: Average timings at MD step   22000. t/step: 9.21596e-04
+ @simulation.run: Average timings at MD step   23000. t/step: 9.30156e-04
+ @simulation.run: Average timings at MD step   24000. t/step: 1.13977e-03
+ @simulation.run: Average timings at MD step   25000. t/step: 1.12207e-03
+ @simulation.run: Average timings at MD step   26000. t/step: 1.07018e-03
+ @simulation.run: Average timings at MD step   27000. t/step: 9.46364e-04
+ @simulation.run: Average timings at MD step   28000. t/step: 9.16346e-04
+ @simulation.run: Average timings at MD step   29000. t/step: 9.31535e-04
+ @simulation.run: Average timings at MD step   30000. t/step: 9.52536e-04
+ @simulation.run: Average timings at MD step   31000. t/step: 9.20394e-04
+ @simulation.run: Average timings at MD step   32000. t/step: 9.32842e-04
+ @simulation.run: Average timings at MD step   33000. t/step: 9.16677e-04
+ @simulation.run: Average timings at MD step   34000. t/step: 9.16077e-04
+ @simulation.run: Average timings at MD step   35000. t/step: 9.09950e-04
+ @simulation.run: Average timings at MD step   36000. t/step: 1.13586e-03
+ @simulation.run: Average timings at MD step   37000. t/step: 1.04512e-03
+ @simulation.run: Average timings at MD step   38000. t/step: 9.16505e-04
+ @simulation.run: Average timings at MD step   39000. t/step: 9.08674e-04
+ @simulation.run: Average timings at MD step   40000. t/step: 9.14694e-04
+ @simulation.run: Average timings at MD step   41000. t/step: 9.11291e-04
+ @simulation.run: Average timings at MD step   42000. t/step: 1.06024e-03
+ @simulation.run: Average timings at MD step   43000. t/step: 9.26275e-04
+ @simulation.run: Average timings at MD step   44000. t/step: 1.23937e-03
+ @simulation.run: Average timings at MD step   45000. t/step: 1.15008e-03
+ @simulation.run: Average timings at MD step   46000. t/step: 1.05832e-03
+ @simulation.run: Average timings at MD step   47000. t/step: 9.21322e-04
+ @simulation.run: Average timings at MD step   48000. t/step: 9.57364e-04
+ @simulation.run: Average timings at MD step   49000. t/step: 1.15709e-03
+ @simulation.run: Average timings at MD step   50000. t/step: 9.22435e-04
+ @simulation.run: Average timings at MD step   51000. t/step: 9.11083e-04
+ @simulation.run: Average timings at MD step   52000. t/step: 9.21660e-04
+ @simulation.run: Average timings at MD step   53000. t/step: 9.18047e-04
+ @simulation.run: Average timings at MD step   54000. t/step: 9.15065e-04
+ @simulation.run: Average timings at MD step   55000. t/step: 1.21325e-03
+ @simulation.run: Average timings at MD step   56000. t/step: 1.00951e-03
+ @simulation.run: Average timings at MD step   57000. t/step: 9.25144e-04
+ @simulation.run: Average timings at MD step   58000. t/step: 1.35273e-03
+ @simulation.run: Average timings at MD step   59000. t/step: 1.11761e-03
+ @simulation.run: Average timings at MD step   60000. t/step: 9.45116e-04
+ @simulation.run: Average timings at MD step   61000. t/step: 1.24045e-03
+ @simulation.run: Average timings at MD step   62000. t/step: 9.39096e-04
+ @simulation.run: Average timings at MD step   63000. t/step: 9.42413e-04
+ @simulation.run: Average timings at MD step   64000. t/step: 9.62163e-04
+ @simulation.run: Average timings at MD step   65000. t/step: 9.79524e-04
+ @simulation.run: Average timings at MD step   66000. t/step: 1.34158e-03
+ @simulation.run: Average timings at MD step   67000. t/step: 1.09985e-03
+ @simulation.run: Average timings at MD step   68000. t/step: 9.56330e-04
+ @simulation.run: Average timings at MD step   69000. t/step: 9.46262e-04
+ @simulation.run: Average timings at MD step   70000. t/step: 9.08062e-04
+ @simulation.run: Average timings at MD step   71000. t/step: 9.32123e-04
+ @simulation.run: Average timings at MD step   72000. t/step: 9.42247e-04
+ @simulation.run: Average timings at MD step   73000. t/step: 9.60970e-04
+ @simulation.run: Average timings at MD step   74000. t/step: 9.70683e-04
+ @simulation.run: Average timings at MD step   75000. t/step: 1.02975e-03
+ @simulation.run: Average timings at MD step   76000. t/step: 1.09655e-03
+ @simulation.run: Average timings at MD step   77000. t/step: 1.30979e-03
+ @simulation.run: Average timings at MD step   78000. t/step: 1.06213e-03
+ @simulation.run: Average timings at MD step   79000. t/step: 1.18480e-03
+ @simulation.run: Average timings at MD step   80000. t/step: 1.08858e-03
+ @simulation.run: Average timings at MD step   81000. t/step: 1.01618e-03
+ @simulation.run: Average timings at MD step   82000. t/step: 9.99623e-04
+ @simulation.run: Average timings at MD step   83000. t/step: 1.00934e-03
+ @simulation.run: Average timings at MD step   84000. t/step: 9.70932e-04
+ @simulation.run: Average timings at MD step   85000. t/step: 9.56711e-04
+ @simulation.run: Average timings at MD step   86000. t/step: 9.68257e-04
+ @simulation.run: Average timings at MD step   87000. t/step: 9.77991e-04
+ @simulation.run: Average timings at MD step   88000. t/step: 1.00389e-03
+ @simulation.run: Average timings at MD step   89000. t/step: 9.57856e-04
+ @simulation.run: Average timings at MD step   90000. t/step: 9.48080e-04
+ @simulation.run: Average timings at MD step   91000. t/step: 9.42694e-04
+ @simulation.run: Average timings at MD step   92000. t/step: 9.40454e-04
+ @simulation.run: Average timings at MD step   93000. t/step: 9.51959e-04
+ @simulation.run: Average timings at MD step   94000. t/step: 9.71821e-04
+ @simulation.run: Average timings at MD step   95000. t/step: 1.03512e-03
+ @simulation.run: Average timings at MD step   96000. t/step: 1.28256e-03
+ @simulation.run: Average timings at MD step   97000. t/step: 9.99241e-04
+ @simulation.run: Average timings at MD step   98000. t/step: 1.03049e-03
+ @simulation.run: Average timings at MD step   99000. t/step: 9.88558e-04
+ @softexit.trigger:  SOFTEXIT CALLED FROM THREAD <_MainThread(MainThread, started 140617973471040)>  @ SIMULATION: Exiting cleanly.
+ !W! Soft exit has been requested with message: ' @ SIMULATION: Exiting cleanly. I-PI reports success. Restartable as is: NO.'. Cleaning up.
+ @interfacesocket.close: Shutting down the driver interface.
+ @simulation.softexit: Saving the latest status at the end of the step
