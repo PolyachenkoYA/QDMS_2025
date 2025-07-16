@@ -76,11 +76,11 @@ All input files are in the `/expanse/projects/qstore/csd973/tutorials/5_GPU_Comp
 ```
 cd $SLURM_TMPDIR
 cp -r  /expanse/projects/qstore/csd973/tutorials/5_GPU_Comp_using_QUICK/ .
-cd 5_GPU_Comp_using_QUICK/QUICK/QM_calc/
+cd 5_GPU_Comp_using_QUICK/QM_calc/
 ```
 Make sure QUICK and Amber are in your PATH.
 ```
-source /expanse/projects/qstore/csd973/ambertools25_src/install/amber.sh
+source /expanse/projects/qstore/csd973/ambertools25_src/install_gpu/amber.sh
 source /expanse/projects/qstore/csd973/QUICK/install/quick.rc
 ```
 Run the following commands to ascertain you have the required executables.
@@ -89,7 +89,6 @@ which quick
 which quick.MPI
 which quick.cuda
 which sander
-which sander.MPI
 which sander.quick.cuda
 ```
 ### Single point calculation
@@ -103,12 +102,11 @@ Fun fact, **Nuclear energy is probably the easiest way to ascertain if two confo
 
 Go to the QM_calc directory and run QM calculation on Taxol using a small basis set (6-31G).
 ```
-cd 5_GPU_Comp_using_QUICK/QM_calc
-quick.cuda taxol_small_basis_set.in
+quick.cuda taxol_small_basis_set_1gpu.in
 ```
 Open the output and check the result.
 ```
-vi taxol_small_basis_set.out
+vi taxol_small_basis_set_1gpu.out
 ```
 Now run CPU jobs for comparison.
 
@@ -120,7 +118,7 @@ cd $SLURM_TMPDIR
 cp -r /expanse/projects/qstore/csd973/tutorials/5_GPU_Comp_using_QUICK/ ./
 cd 5_GPU_Comp_using_QUICK/QM_calc/
 source /expanse/projects/qstore/csd973/quick.sh
-source /expanse/projects/qstore/csd973/ambertools25_src/install_gpu/amber.sh
+source /expanse/projects/qstore/csd973/ambertools25_src/install/amber.sh
 source /expanse/projects/qstore/csd973/QUICK/install/quick.rc
 ```
 Run `lscpu` to details of the EXPANSE compute node CPU architecture.
@@ -138,12 +136,15 @@ The calculations on GPU are significantly faster than the calculaions on CPU.
 Please close the shell running the CPU job and go back to the shell running intractive job in GPU node. 
 The last example used a small basis set. However, for production level calculations you will need a larger basis set including diffuse functions. We will not have time to run the large basis set calculation. The large basis set (6-311++G(2d,2p)), including diffuse functions, calculation can be run by running the following code:
 ```
+# skip this
+cd $SLURM_TMPDIR/5_GPU_Comp_using_QUICK/QM_calc/
 quick.cuda taxol_large_basis_set.in
 ```
 The above calculation will not converge!! This is due to the presence of large number of diffused basis functions leading linearly dependent basis functions (small eigen value of the overlap matrix). This is a general issue with QM codes and not specific to QUICK.
 
 Making the cutoff tighter facilitates convergence. The following calculation will converge.
 ```
+# skip this
 quick.cuda taxol_large_basis_set_tightcut.in
 ```
 Thus, generally if you have convergence issues it arises from either loose cutoff criteria or bad coordinates. You have to be careful to avoid providing coordinates in atomic units.
@@ -162,6 +163,7 @@ The above example uses DL-Find optimizer.
 
 You can also use legacy QUICK optimizer. However, this is **not recommended** as it uses a cartesian coordinate system with a unit matrix as the initial Hessian.
 ```
+# Will take more iterations
 quick.cuda dopamine_opt_lopt.in
 ```
 ### Properties: ESP and RESP charge computation
@@ -176,6 +178,7 @@ This will generate an output (`dopamine_esp.out`) and a file (`dopamine_esp.vdw`
 To compute RESP you need to use antechamber package in Ambertools.
 ```
 antechamber -i dopamine_esp.out -fi quick -o dopamine_esp.mol2 -fo mol2 -c resp -s 2 -pf y
+rm qout QOUT punch esout  # Remove intermediate files
 ```
 `dopamine_esp.mol2` contains the RESP charges.
 ## QM/MM calculation using QUICK and AMBER
@@ -215,7 +218,7 @@ The example runs for 1000 steps (1 ps).
 
 Run the MM MD simulation:
 ```
-cd mm
+cd $SLURM_TMPDIR/5_GPU_Comp_using_QUICK/MM
 # Run in serial on CPU 
 sander -O   # -O forces overwriting of existing output files
 # Run in parallel on CPU 
@@ -237,7 +240,7 @@ The example runs for 20 steps (20 fs)
 
 Run the QM/MM MD simulation with the sander/QUICK executable:
 ```
-cd qmmm
+cd $SLURM_TMPDIR/5_GPU_Comp_using_QUICK/QMMM
 # Run in serial on CPU (will take too long)
 sander -O  
 # Run in parallel on CPU (will take too long)
