@@ -5,6 +5,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=16
+#SBATCH --reservation=QDMS-CPU
 #SBATCH --mem=32GB
 #SBATCH -A csd973
 #SBATCH --export=ALL
