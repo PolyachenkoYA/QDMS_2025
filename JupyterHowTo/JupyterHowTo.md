@@ -36,7 +36,7 @@ To launch a Jupyter Session via the Expanse portal:
     GPUs (optional):
         0
 
-    Environment modules to be loaded:
+    Environment modules to be loaded (this is/was needed for MBX compilation):
         shared,sdsc/1.0,DefaultModules,slurm/expanse/23.02.7,cpu/0.15.4,intel/19.1.1.217,gsl/2.5,intel-mpi/2019.8.254,fftw/3.3.8,intel-mkl,netcdf-cxx,netcdf-c
 
     Conda Environment:
