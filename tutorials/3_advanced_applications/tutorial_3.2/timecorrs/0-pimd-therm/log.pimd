@@ -1,0 +1,162 @@
+
+ ____       ____       ____       ____
+/    \     /    \     /    \     /    \
+|  #################################  |
+\__#_/     \____/     \____/     \_#__/
+   #    _        _______  _____    #
+   #   (_)      |_   __ \|_   _|   #      -*-   v unknown  -*-
+   #   __  ______ | |__) | | |     #
+   Y  [  ||______||  ___/  | |     #      A Universal Force Engine
+  0 0  | |       _| |_    _| |_    #
+   #  [___]     |_____|  |_____|   #
+ __#_       ____       ____       _#__
+/  # \     /    \     /    \     / #  \
+|  #################################  |
+\____/     \____/     \____/     \____/
+
+    
+# Git information:
+#    i-PI version: unknown
+#      Remote URL: https://github.com/i-pi/i-pi.git
+#          Branch: main                    
+#     Last Commit: f5d94d4a2cbc6262d4730c8559e1ad81151cec4f
+#
+# Simulation information:
+#           Machine Name: ockham.pl.ucsd.edu
+#      Working Directory: /home/rrashmi/tutorials/QDMS/final/timecorrs/0-pimd-therm
+#          Date and Time: 2025-07-15 11:47:23
+
+ @system: Initializing system object 
+ @simulation: Initializing simulation object 
+@ RANDOM SEED: The seed used in this calculation was 32415
+ @init_file: Initializing from file oh.xyz. Dimension: length, units: angstrom, cell_units: automatic
+ @set_vector: Initialize is rescaling from     1 beads to    32 beads
+ @init_file: Initializing from file oh.xyz. Dimension: length, units: automatic, cell_units: automatic
+ @init_file: Initializing from file oh.xyz. Dimension: length, units: automatic, cell_units: automatic
+ @init_file: Initializing from file oh.xyz. Dimension: length, units: automatic, cell_units: automatic
+ @initializer: Resampling velocities at temperature 109.0 kelvin
+Import of PyFFTW unsuccessful, using NumPy library instead. 
+ !W! Install PyFFTW to avoid slow normal-modes integration
+ @system.bind: Binding the forces 
+Import of PyFFTW unsuccessful, using NumPy library instead. 
+ !W! Install PyFFTW to avoid slow normal-modes integration
+ @ForceField (driver): Starting the polling thread main loop.
+ @interfacesocket.pool_update:   Client asked for connection from . Now hand-shaking.
+ @interfacesocket.pool_update:   Handshaking was successful. Added to the client list.
+ @simulation.run: Average timings at MD step       0. t/step: 3.09899e-02
+ @simulation.run: Average timings at MD step    1000. t/step: 1.44679e-02
+ @simulation.run: Average timings at MD step    2000. t/step: 1.49467e-02
+ @simulation.run: Average timings at MD step    3000. t/step: 1.44995e-02
+ @simulation.run: Average timings at MD step    4000. t/step: 1.58578e-02
+ @simulation.run: Average timings at MD step    5000. t/step: 1.40615e-02
+ @simulation.run: Average timings at MD step    6000. t/step: 1.53707e-02
+ @simulation.run: Average timings at MD step    7000. t/step: 1.44233e-02
+ @simulation.run: Average timings at MD step    8000. t/step: 1.48562e-02
+ @simulation.run: Average timings at MD step    9000. t/step: 1.57348e-02
+ @simulation.run: Average timings at MD step   10000. t/step: 1.43688e-02
+ @simulation.run: Average timings at MD step   11000. t/step: 1.30011e-02
+ @simulation.run: Average timings at MD step   12000. t/step: 1.44173e-02
+ @simulation.run: Average timings at MD step   13000. t/step: 1.45743e-02
+ @simulation.run: Average timings at MD step   14000. t/step: 1.43517e-02
+ @simulation.run: Average timings at MD step   15000. t/step: 1.01313e-02
+ @simulation.run: Average timings at MD step   16000. t/step: 9.88621e-03
+ @simulation.run: Average timings at MD step   17000. t/step: 9.87758e-03
+ @simulation.run: Average timings at MD step   18000. t/step: 9.56939e-03
+ @simulation.run: Average timings at MD step   19000. t/step: 1.01630e-02
+ @simulation.run: Average timings at MD step   20000. t/step: 9.79813e-03
+ @simulation.run: Average timings at MD step   21000. t/step: 1.01465e-02
+ @simulation.run: Average timings at MD step   22000. t/step: 1.07129e-02
+ @simulation.run: Average timings at MD step   23000. t/step: 1.03169e-02
+ @simulation.run: Average timings at MD step   24000. t/step: 1.03296e-02
+ @simulation.run: Average timings at MD step   25000. t/step: 1.67261e-02
+ @simulation.run: Average timings at MD step   26000. t/step: 1.48002e-02
+ @simulation.run: Average timings at MD step   27000. t/step: 1.70397e-02
+ @simulation.run: Average timings at MD step   28000. t/step: 1.62327e-02
+ @simulation.run: Average timings at MD step   29000. t/step: 1.73436e-02
+ @simulation.run: Average timings at MD step   30000. t/step: 1.61513e-02
+ @simulation.run: Average timings at MD step   31000. t/step: 1.49858e-02
+ @simulation.run: Average timings at MD step   32000. t/step: 1.67282e-02
+ @simulation.run: Average timings at MD step   33000. t/step: 1.57316e-02
+ @simulation.run: Average timings at MD step   34000. t/step: 1.66955e-02
+ @simulation.run: Average timings at MD step   35000. t/step: 1.73358e-02
+ @simulation.run: Average timings at MD step   36000. t/step: 1.52662e-02
+ @simulation.run: Average timings at MD step   37000. t/step: 1.66930e-02
+ @simulation.run: Average timings at MD step   38000. t/step: 1.65882e-02
+ @simulation.run: Average timings at MD step   39000. t/step: 1.72357e-02
+ @simulation.run: Average timings at MD step   40000. t/step: 1.60336e-02
+ @simulation.run: Average timings at MD step   41000. t/step: 1.54031e-02
+ @simulation.run: Average timings at MD step   42000. t/step: 1.66817e-02
+ @simulation.run: Average timings at MD step   43000. t/step: 1.55660e-02
+ @simulation.run: Average timings at MD step   44000. t/step: 1.67011e-02
+ @simulation.run: Average timings at MD step   45000. t/step: 1.71117e-02
+ @simulation.run: Average timings at MD step   46000. t/step: 1.48223e-02
+ @simulation.run: Average timings at MD step   47000. t/step: 1.52345e-02
+ @simulation.run: Average timings at MD step   48000. t/step: 1.63944e-02
+ @simulation.run: Average timings at MD step   49000. t/step: 1.67186e-02
+ @simulation.run: Average timings at MD step   50000. t/step: 1.49385e-02
+ @simulation.run: Average timings at MD step   51000. t/step: 1.45614e-02
+ @simulation.run: Average timings at MD step   52000. t/step: 1.49456e-02
+ @simulation.run: Average timings at MD step   53000. t/step: 1.49899e-02
+ @simulation.run: Average timings at MD step   54000. t/step: 1.59554e-02
+ @simulation.run: Average timings at MD step   55000. t/step: 1.61507e-02
+ @simulation.run: Average timings at MD step   56000. t/step: 1.64165e-02
+ @simulation.run: Average timings at MD step   57000. t/step: 1.77808e-02
+ @simulation.run: Average timings at MD step   58000. t/step: 1.61323e-02
+ @simulation.run: Average timings at MD step   59000. t/step: 1.60401e-02
+ @simulation.run: Average timings at MD step   60000. t/step: 1.55530e-02
+ @simulation.run: Average timings at MD step   61000. t/step: 1.63292e-02
+ @simulation.run: Average timings at MD step   62000. t/step: 1.51099e-02
+ @simulation.run: Average timings at MD step   63000. t/step: 1.38731e-02
+ @simulation.run: Average timings at MD step   64000. t/step: 1.58393e-02
+ @simulation.run: Average timings at MD step   65000. t/step: 1.54435e-02
+ @simulation.run: Average timings at MD step   66000. t/step: 1.55862e-02
+ @simulation.run: Average timings at MD step   67000. t/step: 1.55171e-02
+ @simulation.run: Average timings at MD step   68000. t/step: 1.08019e-02
+ @simulation.run: Average timings at MD step   69000. t/step: 1.05043e-02
+ @simulation.run: Average timings at MD step   70000. t/step: 1.33102e-02
+ @simulation.run: Average timings at MD step   71000. t/step: 1.65222e-02
+ @simulation.run: Average timings at MD step   72000. t/step: 1.57430e-02
+ @simulation.run: Average timings at MD step   73000. t/step: 1.50147e-02
+ @simulation.run: Average timings at MD step   74000. t/step: 1.44427e-02
+ @simulation.run: Average timings at MD step   75000. t/step: 1.42710e-02
+ @simulation.run: Average timings at MD step   76000. t/step: 1.38134e-02
+ @simulation.run: Average timings at MD step   77000. t/step: 1.40072e-02
+ @simulation.run: Average timings at MD step   78000. t/step: 1.31681e-02
+ @simulation.run: Average timings at MD step   79000. t/step: 1.38348e-02
+ @simulation.run: Average timings at MD step   80000. t/step: 1.44389e-02
+ @simulation.run: Average timings at MD step   81000. t/step: 1.45036e-02
+ @simulation.run: Average timings at MD step   82000. t/step: 1.50167e-02
+ @simulation.run: Average timings at MD step   83000. t/step: 1.43705e-02
+ @simulation.run: Average timings at MD step   84000. t/step: 1.56682e-02
+ @simulation.run: Average timings at MD step   85000. t/step: 1.51553e-02
+ @simulation.run: Average timings at MD step   86000. t/step: 1.52170e-02
+ @simulation.run: Average timings at MD step   87000. t/step: 1.50055e-02
+ @simulation.run: Average timings at MD step   88000. t/step: 1.45974e-02
+ @simulation.run: Average timings at MD step   89000. t/step: 1.57548e-02
+ @simulation.run: Average timings at MD step   90000. t/step: 1.31010e-02
+ @simulation.run: Average timings at MD step   91000. t/step: 1.46281e-02
+ @simulation.run: Average timings at MD step   92000. t/step: 1.46194e-02
+ @simulation.run: Average timings at MD step   93000. t/step: 1.30860e-02
+ @simulation.run: Average timings at MD step   94000. t/step: 1.34198e-02
+ @simulation.run: Average timings at MD step   95000. t/step: 1.57028e-02
+ @simulation.run: Average timings at MD step   96000. t/step: 1.39423e-02
+ @simulation.run: Average timings at MD step   97000. t/step: 1.49559e-02
+ @simulation.run: Average timings at MD step   98000. t/step: 1.57061e-02
+ @simulation.run: Average timings at MD step   99000. t/step: 1.57580e-02
+ @softexit.trigger:  SOFTEXIT CALLED FROM THREAD <_MainThread(MainThread, started 139736090629952)>  @ SIMULATION: Exiting cleanly.
+ !W! Soft exit has been requested with message: ' @ SIMULATION: Exiting cleanly. I-PI reports success. Restartable as is: NO.'. Cleaning up.
+ @interfacesocket.close: Shutting down the driver interface.
+Traceback (most recent call last):
+  File "/home/rrashmi/tutorials/QDMS/4-tests/i-pi/bin/i-pi", line 115, in <module>
+    main(args[0], options)
+  File "/home/rrashmi/tutorials/QDMS/4-tests/i-pi/bin/i-pi", line 70, in main
+    softexit.trigger(status="success", message=" @ SIMULATION: Exiting cleanly.")
+  File "/home/rrashmi/tutorials/QDMS/4-tests/i-pi/ipi/utils/softexit.py", line 108, in trigger
+    f(*a, **ka)
+  File "/home/rrashmi/tutorials/QDMS/4-tests/i-pi/ipi/engine/forcefields.py", line 297, in softexit
+    self.stop()
+  File "/home/rrashmi/tutorials/QDMS/4-tests/i-pi/ipi/engine/forcefields.py", line 372, in stop
+    self.socket.close()
+  File "/home/rrashmi/tutorials/QDMS/4-tests/i-pi/ipi/interfaces/sockets.py", line 734, in close
+    os.unlink(self.sockets_prefix + self.address)
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/ipi_oh-pimd'

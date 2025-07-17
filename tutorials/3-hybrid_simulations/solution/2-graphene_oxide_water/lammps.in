@@ -1,0 +1,97 @@
+# Graphene sheet - MB-pol water simulation
+
+variable        T   equal  300
+variable        P   equal  1.0
+variable        dt  equal  0.5 
+variable        nsteps equal 2000
+variable        thermo_freq equal 5
+variable        dump_freq equal 5
+
+processors      * * 1 map xyz
+
+boundary        p p p
+units           real
+atom_style      full
+bond_style      harmonic
+angle_style     harmonic
+angle_style     harmonic
+dihedral_style  opls
+improper_style  harmonic
+
+read_data       initial.data
+
+pair_style      hybrid/overlay mbx 9.0 lj/cut 9.0  tersoff  coul/exclude 9.0
+pair_modify     tail yes   # add long-range VanderWaals tail "correction"
+
+pair_coeff      * * tersoff C.tersoff C C C NULL NULL NULL NULL NULL
+
+# LJ epsilon and sigma are in kcal/mol and Angstroms
+pair_coeff      1 4 lj/cut 0.0883 3.1401 
+pair_coeff      1 5 lj/cut 0.0973 3.2308 
+pair_coeff      1 6 lj/cut 0.0000 0.0000 
+pair_coeff      2 4 lj/cut 0.0883 3.1401 
+pair_coeff      2 5 lj/cut 0.0973 3.2308 
+pair_coeff      2 6 lj/cut 0.0000 0.0000 
+pair_coeff      3 4 lj/cut 0.0883 3.1401 
+pair_coeff      3 5 lj/cut 0.0973 3.2308 
+pair_coeff      3 6 lj/cut 0.0000 0.0000 
+pair_coeff      4 4 lj/cut 0.1400 2.9000 
+pair_coeff      4 5 lj/cut 0.1543 2.9838 
+pair_coeff      4 6 lj/cut 0.0000 0.0000 
+pair_coeff      5 5 lj/cut 0.1701 3.0700 
+pair_coeff      5 6 lj/cut 0.0000 0.0000 
+pair_coeff      6 6 lj/cut 0.0000 0.0000 
+
+# C-C is modeled by Tersoff. However, LJ is used for mixing:
+# σCC = 3.39867 Å
+# εCC = 0.05568 kcal/mol
+
+# suggested LJ parameters for MB-pol:
+# σOO = 3.26393 Å
+# εOO = 0.26948 kcal/mol
+# σHH = 2.68354 Å
+# εHH = 3.7E-10 kcal/mol
+# Mixed using Lorentz-Berthelot rules (epsilon geometric, sigma arithmetic)
+pair_coeff      1 7 lj/cut 0.1225 3.3313 # C - MBpol Oxygen  (Carbon from paper)
+pair_coeff      1 8 lj/cut 0.0001 3.0411 # C - MBpol Hydrogen 
+pair_coeff      2 7 lj/cut 0.1225 3.3313 
+pair_coeff      2 8 lj/cut 0.0001 3.0206 
+pair_coeff      3 7 lj/cut 0.1225 3.3313
+pair_coeff      3 8 lj/cut 0.0001 3.0206
+pair_coeff      4 7 lj/cut 0.1942 3.0766
+pair_coeff      4 8 lj/cut 0.0001 2.7897
+pair_coeff      5 7 lj/cut 0.2140 3.1655 
+pair_coeff      5 8 lj/cut 0.0001 2.8703
+pair_coeff      6 7 lj/cut 0.0001 2.8703
+pair_coeff      6 8 lj/cut 0.0001 2.6835
+
+pair_coeff      1*6 1*6 coul/exclude
+
+#MBX-water
+pair_coeff      7*8 7*8 mbx 0.0 0.0
+
+timestep        ${dt}
+
+neigh_modify    every 1 delay 0 check yes
+
+compute         mbx all pair mbx
+fix             fxmbx all mbx 2 dp1 1 6 1 1 h2o 7 8 3 7 8 8 json mbx.json print/settings print/dipoles
+fix             fxnpt all npt temp ${T} ${T} $(1000.0*dt) iso ${P} ${P} $(4000.0*dt)
+
+fix             thermo_print all print ${thermo_freq} "$(step) $(0.001*time) $(temp) $(etotal) $(ke) $(pe) $(enthalpy) $(density) $(vol) $(press)" &
+                append thermo.out screen no title "# step time temp etotal ke pe enthalpy density vol press"
+
+thermo_style    custom step time temp etotal density lx ly lz vol pxx pyy pzz press
+thermo          ${thermo_freq}
+thermo_modify   flush yes
+
+dump            2 all custom ${dump_freq} traj.lammpstrj id mol element type x y z vx vy vz 
+dump_modify     2 element C1 C2 C3 O4 O5 H6 O H
+dump_modify     2 append no sort id
+
+restart         ${dump_freq} restart.1 restart.2
+
+run             ${nsteps}  upto
+
+write_data      final.data nocoeff
+write_restart   restart.final

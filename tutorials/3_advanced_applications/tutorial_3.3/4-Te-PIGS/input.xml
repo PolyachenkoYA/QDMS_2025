@@ -1,0 +1,41 @@
+<simulation verbosity='low'>
+  <output prefix='simulation'>
+    <properties filename='out' stride='8'>  [step, time{picosecond}, conserved{electronvolt}, temperature{kelvin}, kinetic_md{electronvolt}, potential{electronvolt}, pot_component{electronvolt}(0), pot_component{electronvolt}(1), density{g/cm3}, volume{angstrom3}, pressure_cv{atmosphere}, pressure_md{atmosphere}] </properties>
+    <trajectory filename='pos' format='xyz' stride='8' cell_units='angstrom'> positions{angstrom} </trajectory>
+    <checkpoint filename='restart' stride='8' overwrite='true'/>
+  </output>
+  <total_steps> 200000 </total_steps>
+  <prng>
+    <seed>921282</seed>
+  </prng>
+  <ffsocket mode='unix' pbc='true' name='mbpol-water'>
+    <address> mbpol-water </address>
+  </ffsocket>
+  <ffsocket mode='unix' pbc='true' name='qc-water'>
+    <address> qc-water </address>
+  </ffsocket>
+  <system>
+    <initialize nbeads='1'>
+      <file mode='xyz' units='angstrom'> config.xyz </file>
+      <cell mode='abc' units='angstrom'> [19.6561,19.6561,19.6561] </cell>
+      <velocities mode='thermal' units='kelvin'> 298.0 </velocities>
+    </initialize>
+    <forces>
+      <force forcefield='mbpol-water' weight='1.0'></force>
+      <force forcefield='qc-water' weight='1.0'></force>
+    </forces>
+    <ensemble>
+      <temperature units='kelvin'> 298.0 </temperature>
+      <pressure units='atmosphere'> 1.0 </pressure>
+    </ensemble>
+    <motion mode='dynamics'>
+      <fixcom> true </fixcom>
+      <dynamics mode='nvt'>
+        <thermostat mode='langevin'>
+          <tau units='picosecond'> 0.1 </tau>
+        </thermostat>
+        <timestep units='femtosecond'> 0.5 </timestep>
+      </dynamics>
+    </motion>
+  </system>
+</simulation>

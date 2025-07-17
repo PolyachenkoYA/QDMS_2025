@@ -1,0 +1,64 @@
+timer timeout 23:50:00 every 400
+
+## Simulation time ##
+variable        nsteps  equal 200000
+variable        dt  equal  0.5 
+
+## Dumping frequency ##
+variable        thermo_freq equal 8 
+variable        dump_freq equal 8  
+
+## System setup ##
+units       	real
+atom_style  	full
+boundary        p p p
+processors      * * * map xyz
+
+## Coordinate file ##
+read_data       initial.data 
+
+## MBX parameters ##
+pair_style      mbx 9.0
+pair_modify     mix arithmetic
+pair_coeff      * * 0.0 0.0
+
+## Neighbor list ##
+neighbor    	2.0 bin
+neigh_modify    every 1 delay 10
+
+## Timestep ##
+timestep    	${dt}
+
+## MBX variables ##
+compute         mbx all pair mbx
+variable        e1bpip    equal c_mbx[1]
+variable        e2bpip    equal c_mbx[2]
+variable        e3bpip    equal c_mbx[3]
+variable        e4bpip    equal c_mbx[4]
+variable        edisp     equal c_mbx[5]
+variable        ebuck     equal c_mbx[6]
+variable        eele      equal c_mbx[7]
+variable        etot      equal c_mbx[8]
+
+## Simulation setup ##
+fix             2 all mbx 1 h2o 1 2 3 1 2 2 json mbx.json print/settings print/dipoles
+fix             thermo_print all print ${thermo_freq} "$(step) $(0.001*time) $(temp) $(etotal) $(ke) $(pe) $(enthalpy) $(density) $(vol) $(press)" &
+                append thermo.out screen no title "# step time temp etotal ke pe enthalpy density vol press"
+
+# Dipole moments in Debye units ##
+variable dipnorm_tot atom sqrt(f_2[7]*f_2[7]+f_2[8]*f_2[8]+f_2[9]*f_2[9])/0.2081943 # original (total dipole)
+variable dipnorm_ind atom sqrt(f_2[4]*f_2[4]+f_2[5]*f_2[5]+f_2[6]*f_2[6])/0.2081943 # induced
+variable dipnorm_perm atom sqrt(f_2[1]*f_2[1]+f_2[2]*f_2[2]+f_2[3]*f_2[3])/0.2081943 # perm
+
+variable dipx_perm atom f_2[1]/0.2081943
+variable dipy_perm atom f_2[2]/0.2081943
+variable dipz_perm atom f_2[3]/0.2081943
+variable dipx_ind atom f_2[4]/0.2081943
+variable dipy_ind atom f_2[5]/0.2081943
+variable dipz_ind atom f_2[6]/0.2081943
+
+# Dump details ##
+dump            3 all custom ${dump_freq} dump.dipoles id mol type q x y z v_dipx_perm v_dipy_perm v_dipz_perm v_dipnorm_perm v_dipx_ind v_dipy_ind v_dipz_ind v_dipnorm_ind
+dump_modify     3 sort id
+
+rerun           lmp.lammpstrj dump x y z

@@ -1,5 +1,3 @@
-conda activate p310
-cd /expanse/lustre/projects/csd888/ebullvul/software/development/MB-Fit_versions/QDMS_2025
-export MBFIT_HOME=$PWD
-source sourceme.sh
-cd -
+cp /expanse/lustre/projects/csd973/ebullvul/QDMS_2025/tutorials/2_Many-Body_Model_Build-Along/Tutorial_2_workdir/restart/pbmetad_CH3NH2 Tutorial_2_workdir/restart/pbmetad_CH3NH2
+cp /expanse/lustre/projects/csd973/ebullvul/QDMS_2025/tutorials/2_Many-Body_Model_Build-Along/Tutorial_2_workdir/restart/pbmetad_CH3NH2_H2O Tutorial_2_workdir/restart/pbmetad_CH3NH2_H2O
+cp /expanse/lustre/projects/csd973/ebullvul/QDMS_2025/tutorials/2_Many-Body_Model_Build-Along/Tutorial_2_workdir/restart/pbmetad_CH3NH2_H2O_H2O Tutorial_2_workdir/restart/pbmetad_CH3NH2_H2O_H2O

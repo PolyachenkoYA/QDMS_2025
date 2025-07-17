@@ -1,0 +1,72 @@
+# LAMMPS input script for CNT-water simulation using Dreiding and MBpol
+
+variable        T   equal  298
+variable        P   equal  1.0
+variable        dt  equal  0.5 
+variable        nsteps equal 200
+variable        thermo_freq equal 5
+variable        dump_freq equal 5
+
+processors      * * * map xyz
+
+boundary        p p p
+units           real
+atom_style      full
+read_data       initial.data
+
+#define groups
+group           water type 2 3
+group           cnt type 1
+
+# styles
+bond_style      harmonic
+angle_style     cosine/squared
+dihedral_style  harmonic
+improper_style  umbrella
+special_bonds   dreiding
+
+# CNT
+bond_coeff      1   650.0        1.42          # C-C 
+angle_coeff     1   66.7         120.0         # C-C-C  
+dihedral_coeff  1   3.125       -1           2 # C-C-C-C
+improper_coeff  1   40           0
+
+# Set to 0 for MBX
+bond_coeff      2   0.0 0.0  # Ow-Hw
+angle_coeff     2   0.0 0.0  # Hw-Ow-Hw 
+
+# Define the pair styles using hybrid
+pair_style      lj/cut 9.0
+pair_modify     tail yes
+
+# LJ epsilon and sigma are in kcal/mol and Angstroms
+pair_coeff      1      1         lj/cut      0.076            3.55000 #C - C
+
+timestep        ${dt}
+
+velocity        water create ${T} 12345 dist uniform rot yes mom yes
+
+neighbor        2.0 bin
+neigh_modify    every 1 delay 0 check yes
+
+fix             fxnpt all npt temp ${T} ${T} $(100.0*dt) aniso ${P} ${P} $(1000.0*dt) couple none 
+
+fix             ICECUBE all momentum 1000 linear 1 1 1 angular rescale
+
+fix             thermo_print all print ${thermo_freq} "$(step) $(0.001*time) $(temp) $(etotal) $(ke) $(pe) $(enthalpy) $(density) $(vol) $(press)" &
+                append thermo.out screen no title "# step time temp etotal ke pe enthalpy density vol press"
+
+thermo_style    custom step time temp etotal density lx ly lz vol pxx pyy pzz press
+thermo          ${thermo_freq}
+thermo_modify   flush yes
+
+dump            TRAJ all custom ${dump_freq} traj.lammpstrj id mol element type xu yu zu q vx vy vz
+dump_modify     TRAJ element C O H 
+dump_modify     TRAJ sort id
+
+restart         ${dump_freq} restart.1 restart.2
+
+run             ${nsteps}  upto
+
+write_data      final.data nocoeff
+write_restart   restart.final

@@ -1,0 +1,66 @@
+# Graphene sheet - MB-pol water simulation
+
+variable        T   equal  300
+variable        P   equal  1.0
+variable        dt  equal  0.5 
+variable        nsteps equal 200
+variable        thermo_freq equal 5
+variable        dump_freq equal 5
+
+processors      * * 1 map xyz
+
+boundary        p p p
+units           real
+atom_style      full
+bond_style      harmonic
+angle_style     harmonic
+angle_style     harmonic
+dihedral_style  opls
+improper_style  harmonic
+
+read_data       initial.data
+
+pair_style      tersoff
+
+pair_coeff      * * tersoff C.tersoff C C C NULL NULL NULL
+
+# LJ epsilon and sigma are in kcal/mol and Angstroms
+pair_coeff      1 4 lj/cut 0.0883 3.1401 
+pair_coeff      1 5 lj/cut 0.0973 3.2308 
+pair_coeff      1 6 lj/cut 0.0000 0.0000 
+pair_coeff      2 4 lj/cut 0.0883 3.1401 
+pair_coeff      2 5 lj/cut 0.0973 3.2308 
+pair_coeff      2 6 lj/cut 0.0000 0.0000 
+pair_coeff      3 4 lj/cut 0.0883 3.1401 
+pair_coeff      3 5 lj/cut 0.0973 3.2308 
+pair_coeff      3 6 lj/cut 0.0000 0.0000 
+pair_coeff      4 4 lj/cut 0.1400 2.9000 
+pair_coeff      4 5 lj/cut 0.1543 2.9838 
+pair_coeff      4 6 lj/cut 0.0000 0.0000 
+pair_coeff      5 5 lj/cut 0.1701 3.0700 
+pair_coeff      5 6 lj/cut 0.0000 0.0000 
+pair_coeff      6 6 lj/cut 0.0000 0.0000 
+
+timestep        ${dt}
+
+neigh_modify    every 1 delay 0 check yes
+
+fix             fxnpt all npt temp ${T} ${T} $(1000.0*dt) iso ${P} ${P} $(4000.0*dt)
+
+fix             thermo_print all print ${thermo_freq} "$(step) $(0.001*time) $(temp) $(etotal) $(ke) $(pe) $(enthalpy) $(density) $(vol) $(press)" &
+                append thermo.out screen no title "# step time temp etotal ke pe enthalpy density vol press"
+
+thermo_style    custom step time temp etotal density lx ly lz vol pxx pyy pzz press
+thermo          ${thermo_freq}
+thermo_modify   flush yes
+
+dump            2 all custom ${dump_freq} traj.lammpstrj id mol element type x y z vx vy vz 
+dump_modify     2 element C1 C2 C3 O4 O5 H6 O H
+dump_modify     2 append no sort id
+
+restart         ${dump_freq} restart.1 restart.2
+
+run             ${nsteps}  upto
+
+write_data      final.data nocoeff
+write_restart   restart.final

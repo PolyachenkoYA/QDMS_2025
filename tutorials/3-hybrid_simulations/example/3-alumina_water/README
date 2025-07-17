@@ -1,0 +1,46 @@
+#######################
+1. Bonded interactions:
+
+within alumina: 
+---------------
+ClayFF takes care of it through harmonic potential
+only bonded interaction is for OH bonds
+
+within water: 
+-------------
+MBX takes care of it
+
+##########################
+2. Coulombic interactions:
+
+within alumina: 
+---------------
+No coulombic interactions are specified using lammps
+All coulombic interactions are calculated by MBX. 
+Since ClayFF does not need coulombic interactions for bonded atoms, we use coul exclude on alumina OH to remove the coulombic interactions calculated using MBX
+
+within water: 
+-------------
+MBX takes care of it
+MB-pol charges are used. So, any charges in the input files for water won't be used.
+
+between water and alumina: 
+--------------------------
+MBX takes care of it
+
+###################################
+3. LJ (Van der waals) interactions:
+
+within alumina (only non-bonded atoms): 
+---------------
+clayff takes care of it. (including the mixing part through pair modify arithmetic)
+By default Lammps only calculates LJ for non-bonded interactions.
+
+within water:
+-------------
+MBX takes care of it.
+
+between water and alumina:
+--------------------------
+mixing rules take care of it
+

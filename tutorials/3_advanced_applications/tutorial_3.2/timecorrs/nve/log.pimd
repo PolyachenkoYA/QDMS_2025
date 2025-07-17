@@ -1,0 +1,74 @@
+
+ ____       ____       ____       ____
+/    \     /    \     /    \     /    \
+|  #################################  |
+\__#_/     \____/     \____/     \_#__/
+   #    _        _______  _____    #
+   #   (_)      |_   __ \|_   _|   #      -*-   v unknown  -*-
+   #   __  ______ | |__) | | |     #
+   Y  [  ||______||  ___/  | |     #      A Universal Force Engine
+  0 0  | |       _| |_    _| |_    #
+   #  [___]     |_____|  |_____|   #
+ __#_       ____       ____       _#__
+/  # \     /    \     /    \     / #  \
+|  #################################  |
+\____/     \____/     \____/     \____/
+
+    
+# Git information:
+#    i-PI version: unknown
+#      Remote URL: https://github.com/i-pi/i-pi.git
+#          Branch: main                    
+#     Last Commit: f5d94d4a2cbc6262d4730c8559e1ad81151cec4f
+#
+# Simulation information:
+#           Machine Name: ockham.pl.ucsd.edu
+#      Working Directory: /home/rrashmi/tutorials/QDMS/final/timecorrs/nve
+#          Date and Time: 2025-07-15 12:03:59
+
+ @system: Initializing system object 
+ @simulation: Initializing simulation object 
+@ RANDOM SEED: The seed used in this calculation was 32415
+ @system: Initializing system object 
+ @simulation: Initializing simulation object 
+@ RANDOM SEED: The seed used in this calculation was 1752606239999
+ @system: Initializing system object 
+ @simulation: Initializing simulation object 
+@ RANDOM SEED: The seed used in this calculation was 1752606240012
+ @system: Initializing system object 
+ @simulation: Initializing simulation object 
+@ RANDOM SEED: The seed used in this calculation was 1752606240025
+ @system: Initializing system object 
+ @simulation: Initializing simulation object 
+@ RANDOM SEED: The seed used in this calculation was 1752606240037
+ @system: Initializing system object 
+ @simulation: Initializing simulation object 
+@ RANDOM SEED: The seed used in this calculation was 1752606240049
+ @system.bind: Binding the forces 
+ @ForceField (driver): Starting the polling thread main loop.
+ @interfacesocket.pool_update:   Client asked for connection from . Now hand-shaking.
+ @interfacesocket.pool_update:   Handshaking was successful. Added to the client list.
+ @simulation.run: Average timings at MD step       0. t/step: 2.41661e-03
+ @simulation.run: Average timings at MD step    1000. t/step: 1.29586e-03
+ @simulation.run: Average timings at MD step    2000. t/step: 1.41377e-03
+ @simulation.run: Average timings at MD step    3000. t/step: 1.14044e-03
+ @simulation.run: Average timings at MD step    4000. t/step: 1.06523e-03
+ @simulation.run: Average timings at MD step    5000. t/step: 1.33095e-03
+ @simulation.run: Average timings at MD step    6000. t/step: 1.11438e-03
+ @simulation.run: Average timings at MD step    7000. t/step: 1.42368e-03
+ @simulation.run: Average timings at MD step    8000. t/step: 1.26202e-03
+ @simulation.run: Average timings at MD step    9000. t/step: 1.14560e-03
+ @simulation.run: Average timings at MD step   10000. t/step: 1.32600e-03
+ @simulation.run: Average timings at MD step   11000. t/step: 1.23116e-03
+ @simulation.run: Average timings at MD step   12000. t/step: 1.12858e-03
+ @simulation.run: Average timings at MD step   13000. t/step: 1.12248e-03
+ @simulation.run: Average timings at MD step   14000. t/step: 1.58117e-03
+ @simulation.run: Average timings at MD step   15000. t/step: 1.15598e-03
+ @simulation.run: Average timings at MD step   16000. t/step: 1.11377e-03
+ @simulation.run: Average timings at MD step   17000. t/step: 1.16043e-03
+ @simulation.run: Average timings at MD step   18000. t/step: 1.18355e-03
+ @simulation.run: Average timings at MD step   19000. t/step: 1.19372e-03
+ @softexit.trigger:  SOFTEXIT CALLED FROM THREAD <_MainThread(MainThread, started 140118725953344)>  @ SIMULATION: Exiting cleanly.
+ !W! Soft exit has been requested with message: ' @ SIMULATION: Exiting cleanly. I-PI reports success. Restartable as is: NO.'. Cleaning up.
+ @interfacesocket.close: Shutting down the driver interface.
+ @simulation.softexit: Saving the latest status at the end of the step
