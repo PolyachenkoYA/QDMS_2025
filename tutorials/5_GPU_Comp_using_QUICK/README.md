@@ -192,6 +192,7 @@ N-methyl-capped aspartate, solvated in a droplet of water, as
 model system for ion/protein interactions in aqueous solution.
 
 Model taken from
+
 An extensible interface for QM/MM molecular dynamics simulations with AMBER.
 A. W. Götz, M. A. Clark, R. C. Walker,
 J. Comput. Chem. 35, 95-108 (2014). DOI: 10.1002/jcc.23444
@@ -260,6 +261,7 @@ R1 contains only the chromophore in the QM region. R2 and R4 contains
 2 and 11 residues around the chromophore respectively.
 
 Model taken from
+
 Quantum Mechanics/Molecular Mechanics Simulations on NVIDIA and AMD Graphics Processing Units
 M. Manathunga, H. M. Aktulga, A. W. Goetz, K. M. Merz, Jr.
 J. Chem. Inf. Model. 2023,  63, 711-717
