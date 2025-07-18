@@ -140,7 +140,7 @@ The last example used a small basis set. However, for production level calculati
 cd $SLURM_TMPDIR/5_GPU_Comp_using_QUICK/QM_calc/
 quick.cuda taxol_large_basis_set.in
 ```
-The above calculation will not converge!! This is due to the presence of large number of diffuse basis functions leading linearly dependent basis functions (small eigen value of the overlap matrix). This is a general issue with QM codes and not specific to QUICK.
+The above calculation will not converge!! This is due to the presence of large number of diffuse basis functions which leads to linearly dependent basis functions (small eigen value of the overlap matrix). This is a general issue with QM codes and not specific to QUICK.
 
 Tightening numerical cutoff values facilitates convergence. The following calculation will converge.
 ```
@@ -184,6 +184,7 @@ rm qout QOUT punch esout  # Remove intermediate files
 ```
 `dopamine_esp.mol2` contains the RESP charges.
 ## QM/MM calculation using QUICK and AMBER
+**The basis sets are small here compared to the published results**
 ### Simulation setup
 
 Calcium(2+) ion coordinating to the carboxylate group of acetyl- and 
@@ -249,5 +250,31 @@ sander -O
 mpirun -np 16 sander.MPI -O  
 # Run on single GPU 
 sander.quick.cuda -O  
+```
+
+### QM/MM simulation of photoactive yellow protein (PYP)
+
+QM/MM periodic boundary condition simulation using three different
+QM regions (R1, R2 and R4 has 22, 49 and 159 atoms respectively).
+R1 contains only the chromophore in the QM region. R2 and R4 contains
+2 and 11 residues around the chromophore respectively.
+
+Model taken from
+Quantum Mechanics/Molecular Mechanics Simulations on NVIDIA and AMD Graphics Processing Units
+M. Manathunga, H. M. Aktulga, A. W. Goetz, K. M. Merz, Jr.
+J. Chem. Inf. Model. 2023,  63, 711-717
+
+QM/MM simulations are perfomed 0.5 fs timestep with periodic boundary condition.
+The larger QM systems are more accurate but, computationally expensive.
+
+Run the QM/MM MD simulation with the sander/QUICK executable:
+```
+cd $SLURM_TMPDIR/5_GPU_Comp_using_QUICK/QMMM_pyp/R1
+# Run in serial on CPU (will take too long)
+sander -O
+# Run in parallel on CPU (will take too long)
+mpirun -np 16 sander.MPI -O
+# Run on single GPU
+sander.quick.cuda -O
 ```
 
