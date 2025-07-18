@@ -227,10 +227,14 @@ cd $SLURM_TMPDIR/5_GPU_Comp_using_QUICK/MM
 sander -O   # -O forces overwriting of existing output files
 # Run in parallel on CPU 
 mpirun -np 16 sander.MPI -O
+#Rename the prmtop file as inp.prmtop and mdcrd file as mdcrd.nc
+mv prmtop inp.prmtop
+mv mdcrd mdcrd.nc
 ```
+Go to `https://molstar.org/viewer/` and upload `inp.prmtop` and `mdcrd.nc` files to the Model and Coordinates under Load Trajectory.
+You should be able to visualize the trajectory.
 
-Then inspect the output file mdout and visualize the MD trajectory
-with vmd 
+Or inspect the output file mdout and visualize the MD trajectory with vmd 
 ```
 vmd -parm7 prmtop -netcdf mdcrd
 ```
