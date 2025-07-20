@@ -1,0 +1,30 @@
+QMMM (R1: 22 QM atoms) NVE at dt=0.5fs, 20 steps
+ &cntrl
+  imin     = 0,      ! do MD (no minimization)
+  irest    = 1,      ! trajectory restart
+  ntx      = 5,      ! coordinates and velocities are read in
+  dt       = 0.0005  ! time step in ps
+  cut      = 8.0,    ! non-bonded cutoff
+  ntb      = 1,      ! periodic boundary conditions
+  ntt      = 0,      ! no thermostat
+  ntpr     = 1,      ! logfile print frequency
+  ntwx     = 1,      ! coordinate writing frequency
+  ntwr     = 100,    ! restart file writing frequency
+  nstlim   = 20,     ! number of steps
+  nscm     = 0,      ! COM motion removal frequency
+  jfastw   = 4,      ! do not use routines for fast triangulated water
+  ioutfm   = 1,      ! NetCDF MDCRD.
+  ifqnt    = 1,      ! QM/MM
+/
+&qmmm
+  qmmask       = '@1002-1014,1017-1024', 
+  qmcharge     = -1,
+  qm_theory    = 'quick',
+  qm_ewald     = 0,
+  qmmm_int     = 1,
+/
+&quick
+  method   = 'B3LYP',
+  basis    = '6-31G',
+  outfprefix = 'quick',
+/
