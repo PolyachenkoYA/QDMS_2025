@@ -1,0 +1,21 @@
+19
+-247216.18005645854
+C          1.59947378e+00 -1.86247239e+00  1.07511273e-01 A                             0              1-S-0 2-S-0 3-S-0 4-S-0  formal_charge=+0             extra_radical_pairs=+0            
+H          1.55838563e+00 -2.94980197e+00  1.59178300e-01 B                             0              0-S-0  formal_charge=+0             extra_radical_pairs=+0            
+H          2.50950761e+00 -1.57703612e+00 -4.24113970e-01 B                             0              0-S-0  formal_charge=+0             extra_radical_pairs=+0            
+H          1.66423034e+00 -1.47482219e+00  1.12296018e+00 B                             0              0-S-0  formal_charge=+0             extra_radical_pairs=+0            
+N          3.67557630e-01 -1.33862995e+00 -5.35127948e-01 C                             0              0-S-0 5-S-0 6-S-0  formal_charge=+0             extra_radical_pairs=+0            
+H          4.39571955e-01 -2.92399327e-01 -6.10151331e-01 D                             0              4-S-0  formal_charge=+0             extra_radical_pairs=+0            
+H          3.41615070e-01 -1.70144468e+00 -1.49949796e+00 D                             0              4-S-0  formal_charge=+0             extra_radical_pairs=+0            
+O         -1.84906442e+00 -1.29414174e+00  8.33249984e-01 E                             1              8-S-0 9-S-0  formal_charge=+0             extra_radical_pairs=+0            
+H         -9.92673874e-01 -1.46021504e+00  3.26115610e-01 F                             1              7-S-0  formal_charge=+0             extra_radical_pairs=+0            
+H         -2.53049408e+00 -1.73810030e+00  2.81375043e-01 F                             1              7-S-0  formal_charge=+0             extra_radical_pairs=+0            
+O          2.42938505e+00  2.39083855e+00  5.46399643e-01 E                             2              11-S-0 12-S-0  formal_charge=+0             extra_radical_pairs=+0            
+H          1.61483022e+00  1.99117931e+00  1.42436182e-01 F                             2              10-S-0  formal_charge=+0             extra_radical_pairs=+0            
+H          2.15599178e+00  2.44216423e+00  1.49509431e+00 F                             2              10-S-0  formal_charge=+0             extra_radical_pairs=+0            
+O         -1.88804794e+00  1.15524847e+00  6.90743459e-01 E                             3              14-S-0 15-S-0  formal_charge=+0             extra_radical_pairs=+0            
+H         -1.97238525e+00  1.47821717e-01  7.92872522e-01 F                             3              13-S-0  formal_charge=+0             extra_radical_pairs=+0            
+H         -1.84791818e+00  1.47698621e+00  1.61788048e+00 F                             3              13-S-0  formal_charge=+0             extra_radical_pairs=+0            
+O          2.36356028e-01  1.31050094e+00 -5.06430456e-01 E                             4              17-S-0 18-S-0  formal_charge=+0             extra_radical_pairs=+0            
+H          2.14784014e-02  1.74916432e+00 -1.35866524e+00 F                             4              16-S-0  formal_charge=+0             extra_radical_pairs=+0            
+H         -6.44318251e-01  1.34258102e+00  6.23813480e-03 F                             4              16-S-0  formal_charge=+0             extra_radical_pairs=+0            
